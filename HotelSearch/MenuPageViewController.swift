@@ -36,7 +36,7 @@ class MenuPageViewController: UIPageViewController {
         delegate = self
         
         // 10画面分Viewを用意する
-        for num in 0 ..< 6 {
+        for num in 0 ..< 10 {
             let contentView = ContentsViewController()
             contentView.contentNum = num
             contentViews.append(contentView)
@@ -63,8 +63,6 @@ class MenuPageViewController: UIPageViewController {
         
         view.addSubview(pageControl)
     }
-    
-
 }
 
 // MARK: - UIPageViewControllerDataSource

@@ -1,0 +1,23 @@
+//
+//  HotelData.swift
+//  HotelSearch
+//
+//  Created by 青木孝乃輔 on 2016/10/21.
+//  Copyright © 2016年 青木孝乃輔. All rights reserved.
+//
+
+import UIKit
+
+class HotelData {
+    var hotelId: String = ""
+    var hotelName: String = ""
+    var prefecture: String = ""
+    var largeArea: String = ""
+    var HotelType: String = ""
+    var pictureUrl: String = ""
+    var planName: String = ""
+    var planDetailUrl: String = ""
+    var planPictureUrl: String = ""
+    var meal: String = ""
+    var planSampleRateFrom: String = ""
+}

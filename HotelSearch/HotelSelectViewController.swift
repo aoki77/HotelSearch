@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  HotelSearchViewController.swift
 //  HotelSearch
 //
 //  Created by 青木孝乃輔 on 2016/10/19.

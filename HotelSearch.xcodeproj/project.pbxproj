@@ -15,6 +15,7 @@
 		5E326ED11DB70032001F6604 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E326ED01DB70032001F6604 /* Assets.xcassets */; };
 		5E326EDF1DB70032001F6604 /* HotelSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E326EDE1DB70032001F6604 /* HotelSearchTests.swift */; };
 		5E326EEA1DB70033001F6604 /* HotelSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E326EE91DB70033001F6604 /* HotelSearchUITests.swift */; };
+		5E5154DC1DB9E066009B9F0D /* HotelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5154DB1DB9E066009B9F0D /* HotelData.swift */; };
 		5E7BD5741DB7046C007891A9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E326EF71DB701B3001F6604 /* Alamofire.framework */; };
 		5E7BD5751DB7046C007891A9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E326EF81DB701B3001F6604 /* SwiftyJSON.framework */; };
 		5EE564BD1DB7685B00AC5697 /* MenuPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE564BC1DB7685B00AC5697 /* MenuPageViewController.swift */; };
@@ -59,6 +60,7 @@
 		5E326EEB1DB70033001F6604 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5E326EF71DB701B3001F6604 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Alamofire.framework; path = "../Library/Developer/Xcode/DerivedData/HotelSearch-bvbteuzmajhhwpghlvmddcygbxiy/Build/Products/Debug-iphonesimulator/Alamofire/Alamofire.framework"; sourceTree = "<group>"; };
 		5E326EF81DB701B3001F6604 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../Library/Developer/Xcode/DerivedData/HotelSearch-bvbteuzmajhhwpghlvmddcygbxiy/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
+		5E5154DB1DB9E066009B9F0D /* HotelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelData.swift; sourceTree = "<group>"; };
 		5EE564BC1DB7685B00AC5697 /* MenuPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPageViewController.swift; sourceTree = "<group>"; };
 		5EE564BE1DB76A3D00AC5697 /* ContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
 		5EE564C11DB77FBD00AC5697 /* ConnectJaran.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectJaran.swift; sourceTree = "<group>"; };
@@ -135,10 +137,10 @@
 			isa = PBXGroup;
 			children = (
 				5E326EC91DB70032001F6604 /* AppDelegate.swift */,
+				5E5154DB1DB9E066009B9F0D /* HotelData.swift */,
 				5EE564C01DB76A4600AC5697 /* Controllers */,
 				5E326ED01DB70032001F6604 /* Assets.xcassets */,
 				5E326ED51DB70032001F6604 /* Info.plist */,
-				5E7BD5761DB71272007891A9 /* Controllers */,
 			);
 			path = HotelSearch;
 			sourceTree = "<group>";
@@ -159,13 +161,6 @@
 				5E326EEB1DB70033001F6604 /* Info.plist */,
 			);
 			path = HotelSearchUITests;
-			sourceTree = "<group>";
-		};
-		5E7BD5761DB71272007891A9 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Controllers;
 			sourceTree = "<group>";
 		};
 		5EE564C01DB76A4600AC5697 /* Controllers */ = {
@@ -452,6 +447,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E5154DC1DB9E066009B9F0D /* HotelData.swift in Sources */,
 				5EE564BF1DB76A3D00AC5697 /* ContentsViewController.swift in Sources */,
 				5EE564C21DB77FBD00AC5697 /* ConnectJaran.swift in Sources */,
 				5E326ECC1DB70032001F6604 /* HotelSelectViewController.swift in Sources */,

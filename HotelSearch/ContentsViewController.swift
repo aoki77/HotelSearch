@@ -11,15 +11,16 @@ import UIKit
 class ContentsViewController: UIViewController {
 
     var contentNum: Int?
+    var hotelData: [HotelData]?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupData()
         setupContent()
-        
     }
     
     override func viewDidLayoutSubviews() {
-        //setupImage()
+        setupImage()
     }
     
     /// 画面がタッチされた際に呼ばれる
@@ -30,23 +31,37 @@ class ContentsViewController: UIViewController {
         }
     }
     
+    /// APIからデータを取ってきて格納する
+    private func setupData() {
+       hotelData = ConnectJaran().connectAPI()
+    }
+    
     /// PageViewに表示するコンテンツを用意する
     private func setupContent() {
         guard let guardContentNum = contentNum else { return }
         view.userInteractionEnabled = true
         view.tag = guardContentNum
-        view.backgroundColor = .blueColor()
+        view.backgroundColor = .whiteColor()
     
     }
     
-    /// 画像を貼り付ける
-    private func setupImage() {
-        print(view.bounds.size.height)
+    /// テキストを設定
+    private func setupText() {
+        guard let guardContentNum = contentNum else { return }
+        guard let guardHotelData = hotelData else { return }
         
-        let url = ConnectJaran().connectDbJaran()
+        let contentView =
+        
+        
+    }
+    
+    /// 画像を設定
+    private func setupImage() {
+        
+        guard let guardHotelData = hotelData else { return }
         guard let guardContentNum = contentNum else { return }
         
-        let imageUrl = NSURL(string: url[guardContentNum])
+        let imageUrl = NSURL(string: guardHotelData[guardContentNum].pictureUrl)
         
         guard let guardImageUrl = imageUrl else { return }
         
