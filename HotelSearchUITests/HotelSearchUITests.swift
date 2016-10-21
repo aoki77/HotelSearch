@@ -2,7 +2,7 @@
 //  HotelSearchUITests.swift
 //  HotelSearchUITests
 //
-//  Created by 青木孝乃輔 on 2016/10/19.
+//  Created by 青木孝乃輔 on 2016/10/21.
 //  Copyright © 2016年 青木孝乃輔. All rights reserved.
 //
 

@@ -19,7 +19,7 @@ class ContentsViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        setupImage()
+        //setupImage()
     }
     
     /// 画面がタッチされた際に呼ばれる

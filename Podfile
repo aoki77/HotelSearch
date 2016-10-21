@@ -6,6 +6,7 @@ target 'HotelSearch' do
   use_frameworks!
 
   # Pods for HotelSearch
+    pod 'RealmSwift', '2.0.2'
     pod 'Alamofire', '3.5.0'
     pod 'SwiftyJSON', '2.4.0'
 

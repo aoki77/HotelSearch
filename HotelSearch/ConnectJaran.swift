@@ -64,7 +64,7 @@ extension ConnectJaran: NSXMLParserDelegate {
     // 開始タグと終了タグでくくられたデータがあったときに実行されるメソッド
     func parser(parser: NSXMLParser, foundCharacters string: String) {
         
-        for (name, flg) in elementFlgs {
+        for (_, _) in elementFlgs {
 //            if flg {
 //                elements["\(name)"] = string
 //            }
