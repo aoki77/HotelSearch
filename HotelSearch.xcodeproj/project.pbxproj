@@ -19,7 +19,7 @@
 		5E7BD5751DB7046C007891A9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E326EF81DB701B3001F6604 /* SwiftyJSON.framework */; };
 		5EE564BD1DB7685B00AC5697 /* MenuPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE564BC1DB7685B00AC5697 /* MenuPageViewController.swift */; };
 		5EE564BF1DB76A3D00AC5697 /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE564BE1DB76A3D00AC5697 /* ContentsViewController.swift */; };
-		5EE564C21DB77FBD00AC5697 /* ConnectDb.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE564C11DB77FBD00AC5697 /* ConnectDb.swift */; };
+		5EE564C21DB77FBD00AC5697 /* ConnectJaran.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE564C11DB77FBD00AC5697 /* ConnectJaran.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,7 +61,7 @@
 		5E326EF81DB701B3001F6604 /* SwiftyJSON.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftyJSON.framework; path = "../Library/Developer/Xcode/DerivedData/HotelSearch-bvbteuzmajhhwpghlvmddcygbxiy/Build/Products/Debug-iphonesimulator/SwiftyJSON/SwiftyJSON.framework"; sourceTree = "<group>"; };
 		5EE564BC1DB7685B00AC5697 /* MenuPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPageViewController.swift; sourceTree = "<group>"; };
 		5EE564BE1DB76A3D00AC5697 /* ContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
-		5EE564C11DB77FBD00AC5697 /* ConnectDb.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectDb.swift; sourceTree = "<group>"; };
+		5EE564C11DB77FBD00AC5697 /* ConnectJaran.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectJaran.swift; sourceTree = "<group>"; };
 		767DB4A50EC141E807C44CC4 /* Pods_HotelSearchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotelSearchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B25994D047DA106F9EAE7112 /* Pods-HotelSearchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelSearchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HotelSearchTests/Pods-HotelSearchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		B732A24270A57DE2271E9887 /* Pods-HotelSearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelSearchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotelSearchUITests/Pods-HotelSearchUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -174,7 +174,7 @@
 				5E326ECB1DB70032001F6604 /* HotelSelectViewController.swift */,
 				5EE564BC1DB7685B00AC5697 /* MenuPageViewController.swift */,
 				5EE564BE1DB76A3D00AC5697 /* ContentsViewController.swift */,
-				5EE564C11DB77FBD00AC5697 /* ConnectDb.swift */,
+				5EE564C11DB77FBD00AC5697 /* ConnectJaran.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -453,7 +453,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5EE564BF1DB76A3D00AC5697 /* ContentsViewController.swift in Sources */,
-				5EE564C21DB77FBD00AC5697 /* ConnectDb.swift in Sources */,
+				5EE564C21DB77FBD00AC5697 /* ConnectJaran.swift in Sources */,
 				5E326ECC1DB70032001F6604 /* HotelSelectViewController.swift in Sources */,
 				5E326ECA1DB70032001F6604 /* AppDelegate.swift in Sources */,
 				5EE564BD1DB7685B00AC5697 /* MenuPageViewController.swift in Sources */,

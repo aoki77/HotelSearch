@@ -1,5 +1,5 @@
 //
-//  connectDb.swift
+//  connectJaran.swift
 //  HotelSearch
 //
 //  Created by 青木孝乃輔 on 2016/10/19.
@@ -10,19 +10,20 @@ import UIKit
 import SwiftyJSON
 import Alamofire
 
-final class ConnectDb: NSObject {
+final class ConnectJaran: NSObject {
     
     /// APIKey
     private let APIKey = "ari157d11cb342"
     
-    private var elementFlg = false
+    /// それぞれのタグのフラグ
+    private var elementFlgs = ["HotelID": false, "HotelName": false, "Prefecture": false, "LargeArea": false, "HotelType": false, "PictureURL": false, "PlanName": false, "PlanDetailURL": false, "PlanPictureURL": false, "Meal": false, "PlanSampleRateFrom": false ]
     
     private var pictureURL = [String]()
     
     func connectDbJaran() -> [String] {
         print("kokomadekita")
         let str = "青木"
-        let url = "http://jws.jalan.net/APIAdvance/HotelSearch/V1/?key=\(APIKey)&h_name=\(str)"
+        let url = "http://jws.jalan.net/APIAdvance/HotelSearch/V1/?key=\(APIKey)&xml_ptn=2&h_name=\(str)"
         let encodedUrl = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         let url2 = NSURL(string: encodedUrl)
         
@@ -47,7 +48,7 @@ final class ConnectDb: NSObject {
     
 }
 
-extension ConnectDb: NSXMLParserDelegate {
+extension ConnectJaran: NSXMLParserDelegate {
     
     func parserDidStartDocument(parser: NSXMLParser) {
         print("XML解析開始")
@@ -55,23 +56,27 @@ extension ConnectDb: NSXMLParserDelegate {
     
     // 解析中に要素の開始タグがあったときに実行されるメソッド
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
-        if elementName == "PictureURL" {
-            elementFlg = true
+        if elementFlgs[elementName] != nil {
+            elementFlgs[elementName] = true
         }
     }
     
     // 開始タグと終了タグでくくられたデータがあったときに実行されるメソッド
     func parser(parser: NSXMLParser, foundCharacters string: String) {
-        if elementFlg {
-            pictureURL.append(string)
+        
+        for (name, flg) in elementFlgs {
+//            if flg {
+//                elements["\(name)"] = string
+//            }
+            
         }
         
     }
     
     // 解析中に要素の終了タグがあったときに実行されるメソッド
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        if elementName == "PictureURL" {
-            elementFlg = false
+        if elementFlgs[elementName] != nil {
+            elementFlgs[elementName] = false
         }
     }
     

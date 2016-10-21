@@ -14,21 +14,18 @@ class HotelSelectViewController: UIViewController {
     
     private var selectMenuTable: UITableView?
     private var statusBar: UIStatusBarStyle?
-    private var menuView: UIPageViewController?
+
     
     // MARK: - ライフサイクル関数
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupView()
+        setupPageView()
         setupTableView()
     }
     
-    /// Viewをセット
-    private func setupView() {
-        
-        menuView = MenuPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-        guard let guardMenu = menuView else { return }
+    /// NaviBarとStatusBarの高さを足した値を返す
+    private func barHeight() -> CGFloat {
         
         // ステータスバーの高さを取得
         let statusBarHeight = UIApplication.sharedApplication().statusBarFrame.height
@@ -36,23 +33,31 @@ class HotelSelectViewController: UIViewController {
         // ナビゲーションバーの高さを取得
         let naviBarHeight = navigationController?.navigationBar.frame.size.height
         
-        guard let guardNaviBarHeight = naviBarHeight else { return }
+        guard let guardNaviBarHeight = naviBarHeight else { return 0 }
         
-        // バーの高さ
-        let barHeight = statusBarHeight + guardNaviBarHeight
+        return statusBarHeight + guardNaviBarHeight
         
-        guardMenu.view.frame = CGRect(x: 0, y: barHeight, width: view.bounds.size.width, height: (view.frame.height - barHeight) / 3)
+    }
+    
+    /// PageViewをセット
+    private func setupPageView() {
+        let menuView: UIPageViewController = MenuPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
         
-        addChildViewController(guardMenu)
-        view.addSubview(guardMenu.view)
-        guardMenu.didMoveToParentViewController(self)
+        menuView.view.frame = CGRect(x: 0, y: barHeight(), width: view.bounds.size.width, height: (view.bounds.size.height - barHeight()) / 3)
+        
+        addChildViewController(menuView)
+        view.addSubview(menuView.view)
+        menuView.didMoveToParentViewController(self)
     }
     
     /// テーブルをセット
     private func setupTableView() {
         
+        /* 
+         高さは動的に変化するように後で変更する
+         */
         // TableViewの生成する(status barの高さ分ずらして表示).
-        selectMenuTable = UITableView(frame: CGRect(x: 0, y: view.frame.height / 3, width: view.frame.width, height: self.view.frame.height - (view.frame.height / 3)))
+        selectMenuTable = UITableView(frame: CGRect(x: 0, y: ((view.bounds.size.height - barHeight()) / 3) + barHeight(), width: view.bounds.size.width, height: (((view.bounds.size.height - barHeight()) / 3) * 2)))
         
         guard let guardSelectMenuTable = selectMenuTable else { return }
         

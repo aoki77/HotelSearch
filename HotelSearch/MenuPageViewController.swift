@@ -12,6 +12,8 @@ class MenuPageViewController: UIPageViewController {
     
     //　MARK: - 変数プロパティ
     
+    private var pageControl: UIPageControl!
+    
     /// PageViewに表示するViewを格納した配列
     private var contentViews = [UIViewController]()
     
@@ -21,6 +23,10 @@ class MenuPageViewController: UIPageViewController {
         super.viewDidLoad()
         setupContentsView()
         
+    }
+    
+    override func viewDidLayoutSubviews() {
+       setupPageControl()
     }
     
     /// PageViewに表示するViewを用意する
@@ -36,7 +42,26 @@ class MenuPageViewController: UIPageViewController {
             contentViews.append(contentView)
         }
         setViewControllers([contentViews[0]], direction: .Forward, animated: true, completion: nil)
+    }
     
+    /// PageControlの設定
+    private func setupPageControl() {
+        pageControl = UIPageControl(frame: CGRectMake(0, (view.bounds.size.height / 5) * 4, view.bounds.size.width, view.bounds.size.height / 5))
+        
+        //guard let guardPageControl = pageControl else { return }
+        
+        pageControl.pageIndicatorTintColor = .lightGrayColor()
+        pageControl.currentPageIndicatorTintColor = .greenColor()
+        pageControl.backgroundColor = .clearColor()
+        
+        // PageControlするページ数を設定する.
+        pageControl.numberOfPages = contentViews.count
+        
+        // 現在ページを設定する.
+        pageControl.currentPage = 0
+        pageControl.userInteractionEnabled = false
+        
+        view.addSubview(pageControl)
     }
     
 
@@ -63,15 +88,6 @@ extension MenuPageViewController: UIPageViewControllerDataSource {
             return contentViews.last
         }
     }
-    
-    func presentationCountForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return contentViews.count
-    }
-    
-    func presentationIndexForPageViewController(pageViewController: UIPageViewController) -> Int {
-        return currentIndex
-    }
-    
 }
 
 // MARK: - UIPageViewControllerDelegate
@@ -79,11 +95,9 @@ extension MenuPageViewController: UIPageViewControllerDataSource {
 extension MenuPageViewController: UIPageViewControllerDelegate {
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [UIViewController], transitionCompleted completed: Bool) {
-        guard finished else { return }
         guard let contentVC = pageViewController.viewControllers?.first else { return }
         guard let index = contentViews.indexOf(contentVC) where index != NSNotFound else { return }
-        
-        currentIndex = index
+        pageControl.currentPage = index
     }
     
 }

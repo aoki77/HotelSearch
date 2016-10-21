@@ -35,6 +35,7 @@ class ContentsViewController: UIViewController {
         guard let guardContentNum = contentNum else { return }
         view.userInteractionEnabled = true
         view.tag = guardContentNum
+        view.backgroundColor = .blueColor()
     
     }
     
@@ -42,7 +43,7 @@ class ContentsViewController: UIViewController {
     private func setupImage() {
         print(view.bounds.size.height)
         
-        let url = ConnectDb().connectDbJaran()
+        let url = ConnectJaran().connectDbJaran()
         guard let guardContentNum = contentNum else { return }
         
         let imageUrl = NSURL(string: url[guardContentNum])
