@@ -1,0 +1,660 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		16B7EB2D75043DDA1566D54D /* Pods_HotelSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AFB509580937C65C10BCAF4B /* Pods_HotelSearch.framework */; };
+		5E5154AC1DB9D8F8009B9F0D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5154AB1DB9D8F8009B9F0D /* AppDelegate.swift */; };
+		5E5154AE1DB9D8F8009B9F0D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5154AD1DB9D8F8009B9F0D /* ViewController.swift */; };
+		5E5154B31DB9D8F8009B9F0D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E5154B21DB9D8F8009B9F0D /* Assets.xcassets */; };
+		5E5154C11DB9D8F8009B9F0D /* HotelSearchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5154C01DB9D8F8009B9F0D /* HotelSearchTests.swift */; };
+		5E5154CC1DB9D8F8009B9F0D /* HotelSearchUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5154CB1DB9D8F8009B9F0D /* HotelSearchUITests.swift */; };
+		DAC3608811D2522CD5EEBE99 /* Pods_HotelSearchUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0175E014D9625CB702E71835 /* Pods_HotelSearchUITests.framework */; };
+		F5106D586CBCE2FE024F0312 /* Pods_HotelSearchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A48EFB8146DFB5D4E347BE47 /* Pods_HotelSearchTests.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		5E5154BD1DB9D8F8009B9F0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E5154A01DB9D8F8009B9F0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E5154A71DB9D8F8009B9F0D;
+			remoteInfo = HotelSearch;
+		};
+		5E5154C81DB9D8F8009B9F0D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5E5154A01DB9D8F8009B9F0D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5E5154A71DB9D8F8009B9F0D;
+			remoteInfo = HotelSearch;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		0175E014D9625CB702E71835 /* Pods_HotelSearchUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotelSearchUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		01FF031E3BE0B3C6A538B19D /* Pods-HotelSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelSearch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HotelSearch/Pods-HotelSearch.debug.xcconfig"; sourceTree = "<group>"; };
+		24FE341DF725DDA352955B7F /* Pods-HotelSearchUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelSearchUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HotelSearchUITests/Pods-HotelSearchUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		2785139519185E4BE6AFBB86 /* Pods-HotelSearch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelSearch.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotelSearch/Pods-HotelSearch.release.xcconfig"; sourceTree = "<group>"; };
+		2DDBBDEA85A37BC519BF05C1 /* Pods-HotelSearchTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelSearchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotelSearchTests/Pods-HotelSearchTests.release.xcconfig"; sourceTree = "<group>"; };
+		5E5154A81DB9D8F8009B9F0D /* HotelSearch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HotelSearch.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E5154AB1DB9D8F8009B9F0D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5E5154AD1DB9D8F8009B9F0D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5E5154B21DB9D8F8009B9F0D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5E5154B71DB9D8F8009B9F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E5154BC1DB9D8F8009B9F0D /* HotelSearchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotelSearchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E5154C01DB9D8F8009B9F0D /* HotelSearchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelSearchTests.swift; sourceTree = "<group>"; };
+		5E5154C21DB9D8F8009B9F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5E5154C71DB9D8F8009B9F0D /* HotelSearchUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HotelSearchUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5E5154CB1DB9D8F8009B9F0D /* HotelSearchUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HotelSearchUITests.swift; sourceTree = "<group>"; };
+		5E5154CD1DB9D8F8009B9F0D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7139D53C3B9A7A226668A1DB /* Pods-HotelSearchTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelSearchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-HotelSearchTests/Pods-HotelSearchTests.debug.xcconfig"; sourceTree = "<group>"; };
+		84314D3AD0E8B3D855E0E8A3 /* Pods-HotelSearchUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-HotelSearchUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-HotelSearchUITests/Pods-HotelSearchUITests.release.xcconfig"; sourceTree = "<group>"; };
+		A48EFB8146DFB5D4E347BE47 /* Pods_HotelSearchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotelSearchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AFB509580937C65C10BCAF4B /* Pods_HotelSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_HotelSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5E5154A51DB9D8F8009B9F0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				16B7EB2D75043DDA1566D54D /* Pods_HotelSearch.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E5154B91DB9D8F8009B9F0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5106D586CBCE2FE024F0312 /* Pods_HotelSearchTests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E5154C41DB9D8F8009B9F0D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DAC3608811D2522CD5EEBE99 /* Pods_HotelSearchUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5E51549F1DB9D8F8009B9F0D = {
+			isa = PBXGroup;
+			children = (
+				5E5154AA1DB9D8F8009B9F0D /* HotelSearch */,
+				5E5154BF1DB9D8F8009B9F0D /* HotelSearchTests */,
+				5E5154CA1DB9D8F8009B9F0D /* HotelSearchUITests */,
+				5E5154A91DB9D8F8009B9F0D /* Products */,
+				A4DBE3C1BEF7962AD17E5253 /* Pods */,
+				E6823027A398116245C321EB /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		5E5154A91DB9D8F8009B9F0D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5E5154A81DB9D8F8009B9F0D /* HotelSearch.app */,
+				5E5154BC1DB9D8F8009B9F0D /* HotelSearchTests.xctest */,
+				5E5154C71DB9D8F8009B9F0D /* HotelSearchUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5E5154AA1DB9D8F8009B9F0D /* HotelSearch */ = {
+			isa = PBXGroup;
+			children = (
+				5E5154AB1DB9D8F8009B9F0D /* AppDelegate.swift */,
+				5E5154AD1DB9D8F8009B9F0D /* ViewController.swift */,
+				5E5154B21DB9D8F8009B9F0D /* Assets.xcassets */,
+				5E5154B71DB9D8F8009B9F0D /* Info.plist */,
+			);
+			path = HotelSearch;
+			sourceTree = "<group>";
+		};
+		5E5154BF1DB9D8F8009B9F0D /* HotelSearchTests */ = {
+			isa = PBXGroup;
+			children = (
+				5E5154C01DB9D8F8009B9F0D /* HotelSearchTests.swift */,
+				5E5154C21DB9D8F8009B9F0D /* Info.plist */,
+			);
+			path = HotelSearchTests;
+			sourceTree = "<group>";
+		};
+		5E5154CA1DB9D8F8009B9F0D /* HotelSearchUITests */ = {
+			isa = PBXGroup;
+			children = (
+				5E5154CB1DB9D8F8009B9F0D /* HotelSearchUITests.swift */,
+				5E5154CD1DB9D8F8009B9F0D /* Info.plist */,
+			);
+			path = HotelSearchUITests;
+			sourceTree = "<group>";
+		};
+		A4DBE3C1BEF7962AD17E5253 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				01FF031E3BE0B3C6A538B19D /* Pods-HotelSearch.debug.xcconfig */,
+				2785139519185E4BE6AFBB86 /* Pods-HotelSearch.release.xcconfig */,
+				7139D53C3B9A7A226668A1DB /* Pods-HotelSearchTests.debug.xcconfig */,
+				2DDBBDEA85A37BC519BF05C1 /* Pods-HotelSearchTests.release.xcconfig */,
+				24FE341DF725DDA352955B7F /* Pods-HotelSearchUITests.debug.xcconfig */,
+				84314D3AD0E8B3D855E0E8A3 /* Pods-HotelSearchUITests.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		E6823027A398116245C321EB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				AFB509580937C65C10BCAF4B /* Pods_HotelSearch.framework */,
+				A48EFB8146DFB5D4E347BE47 /* Pods_HotelSearchTests.framework */,
+				0175E014D9625CB702E71835 /* Pods_HotelSearchUITests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5E5154A71DB9D8F8009B9F0D /* HotelSearch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E5154D01DB9D8F8009B9F0D /* Build configuration list for PBXNativeTarget "HotelSearch" */;
+			buildPhases = (
+				011A0068AEBD8125A2BAEE8C /* [CP] Check Pods Manifest.lock */,
+				5E5154A41DB9D8F8009B9F0D /* Sources */,
+				5E5154A51DB9D8F8009B9F0D /* Frameworks */,
+				5E5154A61DB9D8F8009B9F0D /* Resources */,
+				DF3327A5130A9015452F26D1 /* [CP] Embed Pods Frameworks */,
+				B8BC4288D355CCA807F9219D /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = HotelSearch;
+			productName = HotelSearch;
+			productReference = 5E5154A81DB9D8F8009B9F0D /* HotelSearch.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5E5154BB1DB9D8F8009B9F0D /* HotelSearchTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E5154D31DB9D8F8009B9F0D /* Build configuration list for PBXNativeTarget "HotelSearchTests" */;
+			buildPhases = (
+				C9ABAC5D91A847026D6DB90B /* [CP] Check Pods Manifest.lock */,
+				5E5154B81DB9D8F8009B9F0D /* Sources */,
+				5E5154B91DB9D8F8009B9F0D /* Frameworks */,
+				5E5154BA1DB9D8F8009B9F0D /* Resources */,
+				2A2BED9563A23C4BC908AD56 /* [CP] Embed Pods Frameworks */,
+				85D48BF450EC5B143E69A389 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E5154BE1DB9D8F8009B9F0D /* PBXTargetDependency */,
+			);
+			name = HotelSearchTests;
+			productName = HotelSearchTests;
+			productReference = 5E5154BC1DB9D8F8009B9F0D /* HotelSearchTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		5E5154C61DB9D8F8009B9F0D /* HotelSearchUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5E5154D61DB9D8F8009B9F0D /* Build configuration list for PBXNativeTarget "HotelSearchUITests" */;
+			buildPhases = (
+				0F3F846456182254B450A3CF /* [CP] Check Pods Manifest.lock */,
+				5E5154C31DB9D8F8009B9F0D /* Sources */,
+				5E5154C41DB9D8F8009B9F0D /* Frameworks */,
+				5E5154C51DB9D8F8009B9F0D /* Resources */,
+				87DA68CA02D6DF89D39C2356 /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				5E5154C91DB9D8F8009B9F0D /* PBXTargetDependency */,
+			);
+			name = HotelSearchUITests;
+			productName = HotelSearchUITests;
+			productReference = 5E5154C71DB9D8F8009B9F0D /* HotelSearchUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5E5154A01DB9D8F8009B9F0D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "青木孝乃輔";
+				TargetAttributes = {
+					5E5154A71DB9D8F8009B9F0D = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					5E5154BB1DB9D8F8009B9F0D = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 5E5154A71DB9D8F8009B9F0D;
+					};
+					5E5154C61DB9D8F8009B9F0D = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 5E5154A71DB9D8F8009B9F0D;
+					};
+				};
+			};
+			buildConfigurationList = 5E5154A31DB9D8F8009B9F0D /* Build configuration list for PBXProject "HotelSearch" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5E51549F1DB9D8F8009B9F0D;
+			productRefGroup = 5E5154A91DB9D8F8009B9F0D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5E5154A71DB9D8F8009B9F0D /* HotelSearch */,
+				5E5154BB1DB9D8F8009B9F0D /* HotelSearchTests */,
+				5E5154C61DB9D8F8009B9F0D /* HotelSearchUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5E5154A61DB9D8F8009B9F0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E5154B31DB9D8F8009B9F0D /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E5154BA1DB9D8F8009B9F0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E5154C51DB9D8F8009B9F0D /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		011A0068AEBD8125A2BAEE8C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		0F3F846456182254B450A3CF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		2A2BED9563A23C4BC908AD56 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HotelSearchTests/Pods-HotelSearchTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		85D48BF450EC5B143E69A389 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HotelSearchTests/Pods-HotelSearchTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		87DA68CA02D6DF89D39C2356 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HotelSearchUITests/Pods-HotelSearchUITests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B8BC4288D355CCA807F9219D /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HotelSearch/Pods-HotelSearch-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9ABAC5D91A847026D6DB90B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		DF3327A5130A9015452F26D1 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-HotelSearch/Pods-HotelSearch-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5E5154A41DB9D8F8009B9F0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E5154AE1DB9D8F8009B9F0D /* ViewController.swift in Sources */,
+				5E5154AC1DB9D8F8009B9F0D /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E5154B81DB9D8F8009B9F0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E5154C11DB9D8F8009B9F0D /* HotelSearchTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5E5154C31DB9D8F8009B9F0D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5E5154CC1DB9D8F8009B9F0D /* HotelSearchUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		5E5154BE1DB9D8F8009B9F0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E5154A71DB9D8F8009B9F0D /* HotelSearch */;
+			targetProxy = 5E5154BD1DB9D8F8009B9F0D /* PBXContainerItemProxy */;
+		};
+		5E5154C91DB9D8F8009B9F0D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5E5154A71DB9D8F8009B9F0D /* HotelSearch */;
+			targetProxy = 5E5154C81DB9D8F8009B9F0D /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		5E5154CE1DB9D8F8009B9F0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5E5154CF1DB9D8F8009B9F0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5E5154D11DB9D8F8009B9F0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 01FF031E3BE0B3C6A538B19D /* Pods-HotelSearch.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HotelSearch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HotelSearch.HotelSearch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		5E5154D21DB9D8F8009B9F0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2785139519185E4BE6AFBB86 /* Pods-HotelSearch.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = HotelSearch/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HotelSearch.HotelSearch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		5E5154D41DB9D8F8009B9F0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7139D53C3B9A7A226668A1DB /* Pods-HotelSearchTests.debug.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HotelSearchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HotelSearch.HotelSearchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HotelSearch.app/HotelSearch";
+			};
+			name = Debug;
+		};
+		5E5154D51DB9D8F8009B9F0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2DDBBDEA85A37BC519BF05C1 /* Pods-HotelSearchTests.release.xcconfig */;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = HotelSearchTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HotelSearch.HotelSearchTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/HotelSearch.app/HotelSearch";
+			};
+			name = Release;
+		};
+		5E5154D71DB9D8F8009B9F0D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 24FE341DF725DDA352955B7F /* Pods-HotelSearchUITests.debug.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = HotelSearchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HotelSearch.HotelSearchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HotelSearch;
+			};
+			name = Debug;
+		};
+		5E5154D81DB9D8F8009B9F0D /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 84314D3AD0E8B3D855E0E8A3 /* Pods-HotelSearchUITests.release.xcconfig */;
+			buildSettings = {
+				INFOPLIST_FILE = HotelSearchUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = HotelSearch.HotelSearchUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = HotelSearch;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5E5154A31DB9D8F8009B9F0D /* Build configuration list for PBXProject "HotelSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E5154CE1DB9D8F8009B9F0D /* Debug */,
+				5E5154CF1DB9D8F8009B9F0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E5154D01DB9D8F8009B9F0D /* Build configuration list for PBXNativeTarget "HotelSearch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E5154D11DB9D8F8009B9F0D /* Debug */,
+				5E5154D21DB9D8F8009B9F0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E5154D31DB9D8F8009B9F0D /* Build configuration list for PBXNativeTarget "HotelSearchTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E5154D41DB9D8F8009B9F0D /* Debug */,
+				5E5154D51DB9D8F8009B9F0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5E5154D61DB9D8F8009B9F0D /* Build configuration list for PBXNativeTarget "HotelSearchUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5E5154D71DB9D8F8009B9F0D /* Debug */,
+				5E5154D81DB9D8F8009B9F0D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 5E5154A01DB9D8F8009B9F0D /* Project object */;
+}
