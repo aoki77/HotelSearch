@@ -27,7 +27,7 @@ final class ConnectJaran: NSObject {
     private var hotelDataArray = [HotelData]()
     
     /// それぞれのタグのフラグ(key名はタグ名と同一)
-    private var elementFlgs = ["HotelID": false, "HotelName": false, "Prefecture": false, "LargeArea": false, "HotelType": false, "PictureURL": false, "PlanName": false, "PlanDetailURL": false, "PlanPictureUrl": false, "Meal": false, "PlanSampleRateFrom": false ]
+    private var elementFlgs = ["HotelID": false, "HotelName": false, "Prefecture": false, "LargeArea": false, "HotelType": false, "HotelCatchCopy": false, "PictureURL": false, "PlanName": false, "PlanDetailURL": false, "PlanPictureUrl": false, "Meal": false, "PlanSampleRateFrom": false ]
     
     func connectAPI() -> [HotelData] {
         let url = "http://jws.jalan.net/APIAdvance/HotelSearch/V1/?key=\(APIKey)&xml_ptn=2&pref=\(pref)&count=\(count)&order=\(order)"
@@ -85,7 +85,9 @@ extension ConnectJaran: NSXMLParserDelegate {
                 case "LargeArea":
                     hotelData!.largeArea = string
                 case "HotelType":
-                    hotelData!.HotelType = string
+                    hotelData!.hotelType = string
+                case "HotelCatchCopy":
+                    hotelData!.hotelCatchCopy = string
                 case "PictureURL":
                     hotelData!.pictureUrl = string
                 case "PlanName":

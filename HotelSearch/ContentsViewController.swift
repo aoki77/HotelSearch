@@ -20,6 +20,7 @@ class ContentsViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
+        setupText()
         setupImage()
     }
     
@@ -49,8 +50,53 @@ class ContentsViewController: UIViewController {
     private func setupText() {
         guard let guardContentNum = contentNum else { return }
         guard let guardHotelData = hotelData else { return }
+        print(guardHotelData[guardContentNum].hotelName)
+        print("\(guardHotelData[guardContentNum].prefecture) \(guardHotelData[guardContentNum].largeArea)エリア")
+        print(guardHotelData[guardContentNum].hotelCatchCopy)
         
-        let contentView =
+        let textView = UIView()
+        textView.backgroundColor = .whiteColor()
+
+        
+        textView.frame = CGRect(x: view.bounds.size.width / 2, y: 0, width: view.bounds.size.width / 2, height: view.bounds.size.height)
+        
+        let hotelName = UILabel(frame: CGRectMake(0, 0, textView.bounds.width, textView.bounds.height / 7 * 2))
+        hotelName.layer.position = CGPoint(x: textView.bounds.width / 2, y: textView.bounds.height / 7)
+        hotelName.font = UIFont.systemFontOfSize(12)
+        hotelName.numberOfLines = 2
+        hotelName.adjustsFontSizeToFitWidth = true
+        
+        let hotelPefecture = UILabel(frame: CGRect(x: 0, y: 0, width: textView.bounds.width, height: textView.bounds.height / 7))
+        hotelPefecture.layer.position = CGPoint(x: textView.bounds.width / 2, y: (textView.bounds.height / 7 * 2))
+        hotelPefecture.font = UIFont.systemFontOfSize(12)
+        hotelPefecture.adjustsFontSizeToFitWidth = true
+        
+        let hotelLargeArea = UILabel(frame: CGRect(x: 0, y: 0, width: textView.bounds.width, height: textView.bounds.height / 7))
+        hotelLargeArea.layer.position = CGPoint(x: textView.bounds.width / 2, y: (textView.bounds.height / 7 * 3))
+        hotelLargeArea.font = UIFont.systemFontOfSize(12)
+        hotelLargeArea.adjustsFontSizeToFitWidth = true
+        
+        let hotelCaption = UILabel(frame: CGRect(x: 0, y: 0, width: textView.bounds.width, height: (textView.bounds.height / 7) * 3))
+        hotelCaption.layer.position = CGPoint(x: textView.bounds.width / 2, y: (textView.bounds.height / 7) * 5)
+        hotelCaption.font = UIFont.systemFontOfSize(12)
+        hotelCaption.numberOfLines = 3
+        hotelCaption.adjustsFontSizeToFitWidth = true
+        
+        
+        
+        
+        
+        hotelName.text = guardHotelData[guardContentNum].hotelName
+        hotelPefecture.text = guardHotelData[guardContentNum].prefecture
+        hotelLargeArea.text = guardHotelData[guardContentNum].largeArea
+        hotelCaption.text = guardHotelData[guardContentNum].hotelCatchCopy
+        
+        textView.addSubview(hotelName)
+        textView.addSubview(hotelPefecture)
+        textView.addSubview(hotelLargeArea)
+        textView.addSubview(hotelCaption)
+        
+        view.addSubview(textView)
         
         
     }
