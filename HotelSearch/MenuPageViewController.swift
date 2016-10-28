@@ -14,20 +14,25 @@ class MenuPageViewController: UIPageViewController {
     
     private var pageControl: UIPageControl!
     
+    var hotelData: [HotelData]?
+    
     /// PageViewに表示するViewを格納した配列
     private var contentViews = [UIViewController]()
     
     private var currentIndex: Int = 0
+    
+    // MARK: - ライフサイクル関数
 
     override func viewDidLoad() {
         super.viewDidLoad()
         setupContentsView()
-        
     }
     
     override func viewDidLayoutSubviews() {
        setupPageControl()
     }
+    
+    // MARK: - プライベート関数
     
     /// PageViewに表示するViewを用意する
     private func setupContentsView() {
@@ -35,10 +40,13 @@ class MenuPageViewController: UIPageViewController {
         dataSource = self
         delegate = self
         
+        guard let guardHotelData = hotelData else { return }
         // 10画面分Viewを用意する
         for num in 0 ..< 10 {
             let contentView = ContentsViewController()
             contentView.contentNum = num
+            //contentView.view.tag = num
+            contentView.hotelData = guardHotelData[num]
             contentViews.append(contentView)
         }
         setViewControllers([contentViews[0]], direction: .Forward, animated: true, completion: nil)
@@ -59,7 +67,7 @@ class MenuPageViewController: UIPageViewController {
         
         // 現在ページを設定する.
         pageControl.currentPage = 0
-        pageControl.userInteractionEnabled = false
+        //pageControl.userInteractionEnabled = true
         
         view.addSubview(pageControl)
     }
@@ -96,6 +104,18 @@ extension MenuPageViewController: UIPageViewControllerDelegate {
         guard let contentVC = pageViewController.viewControllers?.first else { return }
         guard let index = contentViews.indexOf(contentVC) where index != NSNotFound else { return }
         pageControl.currentPage = index
+        
+        // pageViewをスワイプさせた際にテーブルを閉じる
+        // 改修が必要
+        if let selectView: HotelSelectViewController = parentViewController as? HotelSelectViewController {
+            for planTable in selectView.planTables {
+                if planTable.hidden == false {
+                    planTable.hidden = true
+                    selectView.planTables[index].hidden = false
+                }
+            }
+            
+        }
     }
     
 }

@@ -8,7 +8,9 @@
 
 import UIKit
 
-final class ConnectJaran: NSObject {
+final class ConnectJalan: NSObject {
+    
+    // MARK: - 定数プロパティ
     
     /// APIKey
     private let APIKey = "ari157d11cb342"
@@ -20,14 +22,20 @@ final class ConnectJaran: NSObject {
     private let order = 4
     
     /// 都道府県番号
-    private let pref = 130000
+    private let pref = 140000
+    
+    // MARK: - 変数プロパティ
     
     private var hotelData: HotelData?
     
     private var hotelDataArray = [HotelData]()
     
+    private var parseFlag = true
+    
+    // MARK: - プライベート関数
+    
     /// それぞれのタグのフラグ(key名はタグ名と同一)
-    private var elementFlgs = ["HotelID": false, "HotelName": false, "Prefecture": false, "LargeArea": false, "HotelType": false, "HotelCatchCopy": false, "PictureURL": false, "PlanName": false, "PlanDetailURL": false, "PlanPictureUrl": false, "Meal": false, "PlanSampleRateFrom": false ]
+    private var elementFlgs = ["HotelID": false, "HotelName": false, "Prefecture": false, "LargeArea": false, "HotelType": false, "HotelCatchCopy": false, "PictureURL": false, "PlanName": false, "RoomName": false, "PlanDetailURL": false, "PlanSampleRateFrom": false ]
     
     func connectAPI() -> [HotelData] {
         let url = "http://jws.jalan.net/APIAdvance/HotelSearch/V1/?key=\(APIKey)&xml_ptn=2&pref=\(pref)&count=\(count)&order=\(order)"
@@ -51,10 +59,13 @@ final class ConnectJaran: NSObject {
     
 }
 
-extension ConnectJaran: NSXMLParserDelegate {
+// MARK: - NSXMLParserDelegate
+
+extension ConnectJalan: NSXMLParserDelegate {
     
     func parserDidStartDocument(parser: NSXMLParser) {
         print("XML解析開始")
+        
     }
     
     // 解析中に要素の開始タグがあったときに実行されるメソッド
@@ -91,15 +102,18 @@ extension ConnectJaran: NSXMLParserDelegate {
                 case "PictureURL":
                     hotelData!.pictureUrl = string
                 case "PlanName":
-                    hotelData!.planName = string
+                    if parseFlag {
+                        hotelData!.planName.append(string)
+                        parseFlag = false
+                    } else {
+                        hotelData!.planName[hotelData!.planName.count - 1] = hotelData!.planName[hotelData!.planName.count - 1] + string
+                    }
+                case "RoomName":
+                    hotelData!.roomName.append(string)
                 case "PlanDetailURL":
-                    hotelData!.planDetailUrl = string
-                case "PlanPictureURL":
-                    hotelData!.planPictureUrl = string
-                case "Meal":
-                    hotelData!.meal = string
+                    hotelData!.planDetailUrl.append(string)
                 case "PlanSampleRateFrom":
-                    hotelData!.planSampleRateFrom = string
+                    hotelData!.planSampleRateFrom.append(string)
                 default:
                     break
                 }
@@ -109,6 +123,8 @@ extension ConnectJaran: NSXMLParserDelegate {
     
     // 解析中に要素の終了タグがあったときに実行されるメソッド
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        parseFlag = true
+        
         // フラグをfalseにして処理を一旦終える
         if elementFlgs[elementName] != nil {
             elementFlgs[elementName] = false

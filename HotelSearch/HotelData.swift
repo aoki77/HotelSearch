@@ -16,9 +16,8 @@ class HotelData {
     var hotelType: String = ""
     var hotelCatchCopy: String = ""
     var pictureUrl: String = ""
-    var planName: String = ""
-    var planDetailUrl: String = ""
-    var planPictureUrl: String = ""
-    var meal: String = ""
-    var planSampleRateFrom: String = ""
+    var planName: [String] = [""]
+    var roomName: [String] = [""]
+    var planDetailUrl: [String] = [""]
+    var planSampleRateFrom: [String] = [""]
 }

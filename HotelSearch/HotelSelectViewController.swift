@@ -10,18 +10,30 @@ import UIKit
 
 class HotelSelectViewController: UIViewController {
     
-    // MARK: - 変数
+    // MARK: - 変数プロパティ
     
     private var selectMenuTable: UITableView?
     private var statusBar: UIStatusBarStyle?
-
+    private var pageView: MenuPageViewController?
+    private var planTable: PlanTableView?
+    var planTables = [PlanTableView]()
+    
+    var hotelData: [HotelData]?
     
     // MARK: - ライフサイクル関数
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupData()
         setupPageView()
-        setupTableView()
+        setupPlanTable()
+    }
+    
+    // MARK: - プライベート関数
+    
+    /// APIからデータを取ってきて格納する
+    private func setupData() {
+        hotelData = ConnectJalan().connectAPI()
     }
     
     /// NaviBarとStatusBarの高さを足した値を返す
@@ -41,19 +53,38 @@ class HotelSelectViewController: UIViewController {
     
     /// PageViewをセット
     private func setupPageView() {
-        let menuView: UIPageViewController = MenuPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-        
-        menuView.view.frame = CGRect(x: 0, y: barHeight(), width: view.bounds.size.width, height: (view.bounds.size.height - barHeight()) / 3)
-        
-        addChildViewController(menuView)
-        view.addSubview(menuView.view)
-        menuView.didMoveToParentViewController(self)
+        guard let guardHotelData = hotelData else { return }
+        pageView = MenuPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+        guard let guardPageView = pageView else { return }
+        guardPageView.hotelData = guardHotelData
+        guardPageView.view.frame = CGRect(x: 0, y: barHeight(), width: view.bounds.size.width, height: (view.bounds.size.height - barHeight()) / 3)
+        addChildViewController(guardPageView)
+        view.addSubview(guardPageView.view)
+        guardPageView.didMoveToParentViewController(self)
     }
     
-    /// テーブルをセット
-    private func setupTableView() {
+    /// プラン表示用テーブルをセット
+    private func setupPlanTable() {
+        guard let guardPageView = pageView else { return }
+        guard let guardHotelData = hotelData else { return }
+        for num in 0 ..< 10 {
+        planTable = PlanTableView(frame: CGRectMake(0, barHeight() + guardPageView.view.bounds.height, view.bounds.size.width, (view.bounds.size.height - (barHeight() + guardPageView.view.bounds.height) / 3) * 2 ))
+        guard let guardPlanTable = planTable else { return }
+        guardPlanTable.hotelData = guardHotelData[num]
+        guardPlanTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "planCell")
+        guardPlanTable.hidden = true
+        //guardPlanTable.rowHeight = guardPlanTable.bounds.size.height / 15
+        guardPlanTable.scrollEnabled = false
+        planTables.append(guardPlanTable)
+        view.addSubview(guardPlanTable)
+        }
         
-        /* 
+    }
+    
+    /// 検索用テーブルをセット
+    private func setupSelectTable() {
+        
+        /*
          高さは動的に変化するように後で変更する
          */
         // TableViewの生成する(status barの高さ分ずらして表示).
@@ -72,6 +103,18 @@ class HotelSelectViewController: UIViewController {
         
         // Viewに追加
         self.view.addSubview(guardSelectMenuTable)
+    }
+    
+    // MARK: - スタティック関数
+    
+    /// プラン表示用テーブルを隠す
+    func hidePlanTalbe(contentNum: Int) {
+        planTables[contentNum].hidden = true
+    }
+
+    /// プラン表示用テーブルを出力
+    func outputPlanTable(contentNum: Int) {
+        planTables[contentNum].hidden = false
     }
 }
 
