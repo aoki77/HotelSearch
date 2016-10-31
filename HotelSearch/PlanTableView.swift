@@ -88,7 +88,13 @@ extension PlanTableView: UITableViewDelegate {
     
     /// Cellが選択された際に呼び出されるデリゲートメソッド
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        print("Num: \(indexPath.row)")
+        // safariで詳細ページに飛ばす
+        guard let guardHotelData = hotelData else { return }
+        print(guardHotelData.planDetailUrl[indexPath.row + 1])
+        let url = NSURL(string: guardHotelData.planDetailUrl[indexPath.row + 1])
+        if UIApplication.sharedApplication().canOpenURL(url!){
+            UIApplication.sharedApplication().openURL(url!)
+        }
     }
     
 }

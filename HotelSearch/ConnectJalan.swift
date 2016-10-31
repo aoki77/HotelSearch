@@ -30,7 +30,9 @@ final class ConnectJalan: NSObject {
     
     private var hotelDataArray = [HotelData]()
     
-    private var parseFlag = true
+    private var planNameFlag = true
+    
+    private var PlanDetailFlag = true
     
     // MARK: - プライベート関数
     
@@ -102,16 +104,21 @@ extension ConnectJalan: NSXMLParserDelegate {
                 case "PictureURL":
                     hotelData!.pictureUrl = string
                 case "PlanName":
-                    if parseFlag {
+                    if planNameFlag {
                         hotelData!.planName.append(string)
-                        parseFlag = false
+                        planNameFlag = false
                     } else {
                         hotelData!.planName[hotelData!.planName.count - 1] = hotelData!.planName[hotelData!.planName.count - 1] + string
                     }
                 case "RoomName":
                     hotelData!.roomName.append(string)
                 case "PlanDetailURL":
-                    hotelData!.planDetailUrl.append(string)
+                    if PlanDetailFlag {
+                        hotelData!.planDetailUrl.append(string)
+                        PlanDetailFlag = false
+                    } else {
+                        hotelData!.planDetailUrl[hotelData!.planDetailUrl.count - 1] = hotelData!.planDetailUrl[hotelData!.planDetailUrl.count - 1] + string
+                    }
                 case "PlanSampleRateFrom":
                     hotelData!.planSampleRateFrom.append(string)
                 default:
@@ -123,7 +130,8 @@ extension ConnectJalan: NSXMLParserDelegate {
     
     // 解析中に要素の終了タグがあったときに実行されるメソッド
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
-        parseFlag = true
+        planNameFlag = true
+        PlanDetailFlag = true
         
         // フラグをfalseにして処理を一旦終える
         if elementFlgs[elementName] != nil {

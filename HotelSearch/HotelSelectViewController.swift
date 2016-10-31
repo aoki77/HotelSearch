@@ -16,7 +16,7 @@ class HotelSelectViewController: UIViewController {
     
     // MARK: - 変数プロパティ
     
-    private var selectMenuTable: UITableView?
+    private var selectMenuTable = UITableView()
     private var statusBar: UIStatusBarStyle?
     private var pageView = MenuPageViewController()
     private var planTable: PlanTableView?
@@ -31,6 +31,7 @@ class HotelSelectViewController: UIViewController {
         setupScrollView()
         setupPageView()
         setupPlanTable()
+        setupSelectTable()
     }
     
     // MARK: - プライベート関数
@@ -88,19 +89,17 @@ class HotelSelectViewController: UIViewController {
         // TableViewの生成する(status barの高さ分ずらして表示).
         selectMenuTable = UITableView(frame: CGRect(x: 0, y: ((view.bounds.size.height - barHeight()) / 3) + barHeight(), width: view.bounds.size.width, height: (((view.bounds.size.height - barHeight()) / 3) * 2)))
         
-        guard let guardSelectMenuTable = selectMenuTable else { return }
-        
         // Cell名の登録
-        guardSelectMenuTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        selectMenuTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         
         // スクロール禁止
-        guardSelectMenuTable.scrollEnabled = false
+        selectMenuTable.scrollEnabled = false
         
-        guardSelectMenuTable.dataSource = self
-        guardSelectMenuTable.delegate = self
+        selectMenuTable.dataSource = self
+        selectMenuTable.delegate = self
         
         // Viewに追加
-        scrollView.addSubview(guardSelectMenuTable)
+        scrollView.addSubview(selectMenuTable)
     }
     
     /// ScrollViewをセット
@@ -126,11 +125,13 @@ class HotelSelectViewController: UIViewController {
     
     /// プラン表示用テーブルに合わせてscrollViewのコンテンツサイズを変更
     func updatePlanTableHeight(contentNum: Int) {
-        scrollView.contentSize.height =  pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight()
+        scrollView.contentSize.height =  pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight() + selectMenuTable.bounds.size.height
+        selectMenuTable.frame.origin.y = pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight()
     }
     
     func updateNonePlanTableHeight() {
         scrollView.contentSize.height = pageView.view.bounds.size.height + barHeight()
+        selectMenuTable.frame.origin.y = pageView.view.bounds.size.height + barHeight()
     }
 }
 

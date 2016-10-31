@@ -109,8 +109,6 @@ extension MenuPageViewController: UIPageViewControllerDelegate {
         if let selectView: HotelSelectViewController = parentViewController as? HotelSelectViewController {
             for planTable in selectView.planTables {
                 
-                
-                
                 if planTable.hidden == false {
                     // pageViewをスワイプさせた際にプラン一覧を一緒に変更
                     planTable.hidden = true
