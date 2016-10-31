@@ -10,15 +10,17 @@ import UIKit
 
 class HotelSelectViewController: UIViewController {
     
-    // MARK: - 変数プロパティ
+    // MARK: - 定数プロパティ
     
     private let scrollView = UIScrollView()
+    
+    // MARK: - 変数プロパティ
+    
     private var selectMenuTable: UITableView?
     private var statusBar: UIStatusBarStyle?
     private var pageView = MenuPageViewController()
     private var planTable: PlanTableView?
     var planTables = [PlanTableView]()
-    
     var hotelData: [HotelData]?
     
     // MARK: - ライフサイクル関数
@@ -83,9 +85,6 @@ class HotelSelectViewController: UIViewController {
     /// 検索用テーブルをセット
     private func setupSelectTable() {
         
-        /*
-         高さは動的に変化するように後で変更する
-        */
         // TableViewの生成する(status barの高さ分ずらして表示).
         selectMenuTable = UITableView(frame: CGRect(x: 0, y: ((view.bounds.size.height - barHeight()) / 3) + barHeight(), width: view.bounds.size.width, height: (((view.bounds.size.height - barHeight()) / 3) * 2)))
         
@@ -127,8 +126,7 @@ class HotelSelectViewController: UIViewController {
     
     /// プラン表示用テーブルに合わせてscrollViewのコンテンツサイズを変更
     func updatePlanTableHeight(contentNum: Int) {
-        scrollView.contentSize.height = planTables[contentNum].bounds.size.height + barHeight()
-        //CGSizeMake(view.frame.size.width, pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight())
+        scrollView.contentSize.height =  pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight()
     }
     
     func updateNonePlanTableHeight() {
