@@ -105,13 +105,21 @@ extension MenuPageViewController: UIPageViewControllerDelegate {
         guard let index = contentViews.indexOf(contentVC) where index != NSNotFound else { return }
         pageControl.currentPage = index
         
-        // pageViewをスワイプさせた際にテーブルを閉じる
-        // 改修が必要
+        
         if let selectView: HotelSelectViewController = parentViewController as? HotelSelectViewController {
             for planTable in selectView.planTables {
+                
+                
+                
                 if planTable.hidden == false {
+                    // pageViewをスワイプさせた際にプラン一覧を一緒に変更
                     planTable.hidden = true
                     selectView.planTables[index].hidden = false
+                    // プラン一覧の高さに合わせてScrollViewを変更する関数を呼び出す
+                    selectView.updatePlanTableHeight(index)
+                } else {
+                    // プラン一覧の高さを換算しないでScrollViewの高さを設定する関数を呼び出す
+                    selectView.updateNonePlanTableHeight()
                 }
             }
             

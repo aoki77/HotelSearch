@@ -90,17 +90,22 @@ class ContentsViewController: UIViewController {
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesEnded(touches, withEvent: event)
         
+        // 親画面(HotelSelectViewController)に値を送る
         if let pageView: MenuPageViewController = parentViewController as? MenuPageViewController {
             if let selectView: HotelSelectViewController = pageView.parentViewController as? HotelSelectViewController {
                 
                 guard let guardContentNum = contentNum else { return }
                 
+                // フラグ及びScrollViewの高さを更新する
                 if planTableFlag {
                     selectView.hidePlanTalbe(guardContentNum)
                     planTableFlag = false
+                    selectView.updateNonePlanTableHeight()
+                    
                 } else {
                     selectView.outputPlanTable(guardContentNum)
                     planTableFlag = true
+                    selectView.updatePlanTableHeight(guardContentNum)
                 }
                 
             }

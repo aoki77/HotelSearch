@@ -22,7 +22,7 @@ final class ConnectJalan: NSObject {
     private let order = 4
     
     /// 都道府県番号
-    private let pref = 140000
+    private let pref = 120000
     
     // MARK: - 変数プロパティ
     

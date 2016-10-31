@@ -47,10 +47,12 @@ extension PlanTableView: UITableViewDataSource {
         
         // 左端まで線を引く
         cell.layoutMargins = UIEdgeInsetsZero
-        //cell.frame.size.height = tableView.bounds.height / 10
         
         guard let guardHotelData = hotelData else { return cell }
 
+        // テーブルビューの高さをセル数に合わせて変更
+        tableView.frame.size.height = cell.bounds.size.height * CGFloat(guardHotelData.planName.count - 1)
+        
         // プラン名の設定
         let planName = UILabel()
         planName.text = guardHotelData.planName[indexPath.row + 1]
@@ -70,8 +72,6 @@ extension PlanTableView: UITableViewDataSource {
         planPrice.text = "\t価格: \(guardHotelData.planSampleRateFrom[indexPath.row + 1])円"
         planPrice.frame = CGRect(x: 0, y: (cell.bounds.size.height / 3) * 2, width: cell.bounds.size.width, height: cell.bounds.size.height / 3)
         planPrice.font = UIFont(name: "Arial", size: cell.bounds.size.height / 4)
-        
-
         
         cell.addSubview(planName)
         cell.addSubview(roomName)

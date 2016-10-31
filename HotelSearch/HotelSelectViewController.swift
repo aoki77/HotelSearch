@@ -12,9 +12,10 @@ class HotelSelectViewController: UIViewController {
     
     // MARK: - 変数プロパティ
     
+    private let scrollView = UIScrollView()
     private var selectMenuTable: UITableView?
     private var statusBar: UIStatusBarStyle?
-    private var pageView: MenuPageViewController?
+    private var pageView = MenuPageViewController()
     private var planTable: PlanTableView?
     var planTables = [PlanTableView]()
     
@@ -25,6 +26,7 @@ class HotelSelectViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupData()
+        setupScrollView()
         setupPageView()
         setupPlanTable()
     }
@@ -55,30 +57,27 @@ class HotelSelectViewController: UIViewController {
     private func setupPageView() {
         guard let guardHotelData = hotelData else { return }
         pageView = MenuPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
-        guard let guardPageView = pageView else { return }
-        guardPageView.hotelData = guardHotelData
-        guardPageView.view.frame = CGRect(x: 0, y: barHeight(), width: view.bounds.size.width, height: (view.bounds.size.height - barHeight()) / 3)
-        addChildViewController(guardPageView)
-        view.addSubview(guardPageView.view)
-        guardPageView.didMoveToParentViewController(self)
+        pageView.hotelData = guardHotelData
+        pageView.view.frame = CGRect(x: 0, y: barHeight(), width: view.bounds.size.width, height: (view.bounds.size.height - barHeight()) / 3)
+        addChildViewController(pageView)
+        scrollView.addSubview(pageView.view)
+        pageView.didMoveToParentViewController(self)
     }
     
     /// プラン表示用テーブルをセット
     private func setupPlanTable() {
-        guard let guardPageView = pageView else { return }
         guard let guardHotelData = hotelData else { return }
         for num in 0 ..< 10 {
-        planTable = PlanTableView(frame: CGRectMake(0, barHeight() + guardPageView.view.bounds.height, view.bounds.size.width, (view.bounds.size.height - (barHeight() + guardPageView.view.bounds.height) / 3) * 2 ))
-        guard let guardPlanTable = planTable else { return }
-        guardPlanTable.hotelData = guardHotelData[num]
-        guardPlanTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "planCell")
-        guardPlanTable.hidden = true
-        //guardPlanTable.rowHeight = guardPlanTable.bounds.size.height / 15
-        guardPlanTable.scrollEnabled = false
-        planTables.append(guardPlanTable)
-        view.addSubview(guardPlanTable)
+            planTable = PlanTableView(frame: CGRectMake(0, barHeight() + pageView.view.bounds.height, view.bounds.size.width, (view.bounds.size.height - (barHeight() + pageView.view.bounds.height) / 3) * 2 ))
+            guard let guardPlanTable = planTable else { return }
+            guardPlanTable.hotelData = guardHotelData[num]
+            guardPlanTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "planCell")
+            guardPlanTable.hidden = true
+            guardPlanTable.scrollEnabled = false
+            planTables.append(guardPlanTable)
+            scrollView.addSubview(guardPlanTable)
+            
         }
-        
     }
     
     /// 検索用テーブルをセット
@@ -86,7 +85,7 @@ class HotelSelectViewController: UIViewController {
         
         /*
          高さは動的に変化するように後で変更する
-         */
+        */
         // TableViewの生成する(status barの高さ分ずらして表示).
         selectMenuTable = UITableView(frame: CGRect(x: 0, y: ((view.bounds.size.height - barHeight()) / 3) + barHeight(), width: view.bounds.size.width, height: (((view.bounds.size.height - barHeight()) / 3) * 2)))
         
@@ -102,7 +101,16 @@ class HotelSelectViewController: UIViewController {
         guardSelectMenuTable.delegate = self
         
         // Viewに追加
-        self.view.addSubview(guardSelectMenuTable)
+        scrollView.addSubview(guardSelectMenuTable)
+    }
+    
+    /// ScrollViewをセット
+    private func setupScrollView() {
+        // ScrollViewを生成
+        scrollView.frame = CGRectMake(0, (-1 * barHeight()), view.frame.size.width, view.frame.size.height + barHeight())
+        scrollView.contentSize = CGSizeMake(view.bounds.size.width, view.bounds.size.height)
+        
+        view.addSubview(scrollView)
     }
     
     // MARK: - スタティック関数
@@ -111,10 +119,20 @@ class HotelSelectViewController: UIViewController {
     func hidePlanTalbe(contentNum: Int) {
         planTables[contentNum].hidden = true
     }
-
+    
     /// プラン表示用テーブルを出力
     func outputPlanTable(contentNum: Int) {
         planTables[contentNum].hidden = false
+    }
+    
+    /// プラン表示用テーブルに合わせてscrollViewのコンテンツサイズを変更
+    func updatePlanTableHeight(contentNum: Int) {
+        scrollView.contentSize.height = planTables[contentNum].bounds.size.height + barHeight()
+        //CGSizeMake(view.frame.size.width, pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight())
+    }
+    
+    func updateNonePlanTableHeight() {
+        scrollView.contentSize.height = pageView.view.bounds.size.height + barHeight()
     }
 }
 
