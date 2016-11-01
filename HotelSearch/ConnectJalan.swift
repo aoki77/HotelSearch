@@ -39,6 +39,7 @@ final class ConnectJalan: NSObject {
     /// それぞれのタグのフラグ(key名はタグ名と同一)
     private var elementFlgs = ["HotelID": false, "HotelName": false, "Prefecture": false, "LargeArea": false, "HotelType": false, "HotelCatchCopy": false, "PictureURL": false, "PlanName": false, "RoomName": false, "PlanDetailURL": false, "PlanSampleRateFrom": false ]
     
+    /// APIを叩き必要なデータを取ってくる
     func connectAPI() -> [HotelData] {
         let url = "http://jws.jalan.net/APIAdvance/HotelSearch/V1/?key=\(APIKey)&xml_ptn=2&pref=\(pref)&count=\(count)&order=\(order)"
         let encodedUrl = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
@@ -70,20 +71,20 @@ extension ConnectJalan: NSXMLParserDelegate {
         
     }
     
-    // 解析中に要素の開始タグがあったときに実行されるメソッド
+    /// 解析中に要素の開始タグがあったときに実行されるメソッド
     func parser(parser: NSXMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
         // nilじゃなければフラグをtrueにして処理をする
         if elementFlgs[elementName] != nil {
             elementFlgs[elementName] = true
         }
         
-        /// ホテルの開始タグの時にホテル情報を入れるインスタンスを生成(一つのホテルの情報は<Hotel>タグで囲まれている)
+        // ホテルの開始タグの時にホテル情報を入れるインスタンスを生成(一つのホテルの情報は<Hotel>タグで囲まれている)
         if elementName == "Hotel" {
             hotelData = HotelData()
         }
     }
     
-    // 開始タグと終了タグでくくられたデータがあったときに実行されるメソッド
+    /// 開始タグと終了タグでくくられたデータがあったときに実行されるメソッド
     func parser(parser: NSXMLParser, foundCharacters string: String) {
         for (name, flg) in elementFlgs {
             // フラグがtrueかどうか判定し、その後さらにnameを判定して正しい変数の中に値を入れる
@@ -128,7 +129,7 @@ extension ConnectJalan: NSXMLParserDelegate {
         }
     }
     
-    // 解析中に要素の終了タグがあったときに実行されるメソッド
+    /// 解析中に要素の終了タグがあったときに実行されるメソッド
     func parser(parser: NSXMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
         planNameFlag = true
         PlanDetailFlag = true
@@ -138,19 +139,19 @@ extension ConnectJalan: NSXMLParserDelegate {
             elementFlgs[elementName] = false
         }
         
-        /// ホテルの終了タグの時にホテル情報を配列に格納(一つのホテルの情報は<Hotel>タグで囲まれている)
+        // ホテルの終了タグの時にホテル情報を配列に格納(一つのホテルの情報は<Hotel>タグで囲まれている)
         if elementName == "Hotel" {
             guard let guardhotelData = hotelData else { return }
             hotelDataArray.append(guardhotelData)
         }
     }
     
-    // XML解析終了時に実行されるメソッド
+    /// XML解析終了時に実行されるメソッド
     func parserDidEndDocument(parser: NSXMLParser) {
         print("XML解析終了しました")
     }
     
-    // 解析中にエラーが発生した時に実行されるメソッド
+    /// 解析中にエラーが発生した時に実行されるメソッド
     func parser(parser: NSXMLParser, parseErrorOccurred parseError: NSError) {
         print("エラー:" + parseError.localizedDescription)
     }

@@ -107,7 +107,6 @@ class ContentsViewController: UIViewController {
                     planTableFlag = true
                     selectView.updatePlanTableHeight(guardContentNum)
                 }
-                
             }
         }
     }

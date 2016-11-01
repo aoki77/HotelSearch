@@ -16,7 +16,7 @@ class HotelSelectViewController: UIViewController {
     
     // MARK: - 変数プロパティ
     
-    private var selectMenuTable = UITableView()
+    private var selectMenuTable = SelectMenuTableView()
     private var statusBar: UIStatusBarStyle?
     private var pageView = MenuPageViewController()
     private var planTable: PlanTableView?
@@ -75,11 +75,12 @@ class HotelSelectViewController: UIViewController {
             guard let guardPlanTable = planTable else { return }
             guardPlanTable.hotelData = guardHotelData[num]
             guardPlanTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "planCell")
+            guardPlanTable.rowHeight = view.bounds.size.height / 10
             guardPlanTable.hidden = true
             guardPlanTable.scrollEnabled = false
+//            guardPlanTable.layoutMargins = UIEdgeInsetsZero
             planTables.append(guardPlanTable)
             scrollView.addSubview(guardPlanTable)
-            
         }
     }
     
@@ -87,16 +88,13 @@ class HotelSelectViewController: UIViewController {
     private func setupSelectTable() {
         
         // TableViewの生成する(status barの高さ分ずらして表示).
-        selectMenuTable = UITableView(frame: CGRect(x: 0, y: ((view.bounds.size.height - barHeight()) / 3) + barHeight(), width: view.bounds.size.width, height: (((view.bounds.size.height - barHeight()) / 3) * 2)))
+        selectMenuTable = SelectMenuTableView(frame: CGRect(x: 0, y: ((view.bounds.size.height - barHeight()) / 3) + barHeight(), width: view.bounds.size.width, height: (((view.bounds.size.height - barHeight()) / 3) * 2)))
         
         // Cell名の登録
-        selectMenuTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        selectMenuTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "selectMenuCell")
         
         // スクロール禁止
         selectMenuTable.scrollEnabled = false
-        
-        selectMenuTable.dataSource = self
-        selectMenuTable.delegate = self
         
         // Viewに追加
         scrollView.addSubview(selectMenuTable)
@@ -123,43 +121,15 @@ class HotelSelectViewController: UIViewController {
         planTables[contentNum].hidden = false
     }
     
-    /// プラン表示用テーブルに合わせてscrollViewのコンテンツサイズを変更
+    /// プラン表示用テーブルに合わせてScrollViewのコンテンツサイズを変更
     func updatePlanTableHeight(contentNum: Int) {
         scrollView.contentSize.height =  pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight() + selectMenuTable.bounds.size.height
         selectMenuTable.frame.origin.y = pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight()
     }
     
+    /// プラン表示用テーブルを換算しないようにScrollViewのコンテンツサイズを変更
     func updateNonePlanTableHeight() {
         scrollView.contentSize.height = pageView.view.bounds.size.height + barHeight()
         selectMenuTable.frame.origin.y = pageView.view.bounds.size.height + barHeight()
     }
-}
-
-// MARK: - UITableViewDatasource
-
-extension HotelSelectViewController: UITableViewDataSource {
-    
-    /// Cellの総数を返す
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
-    }
-    
-    /// Cellに値をセット
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
-        // 再利用するCellを取得
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)
-        
-        // Cellに値を設定する.
-        cell.textLabel!.text = "\(indexPath.row)"
-        
-        return cell
-    }
-    
-}
-
-// MARK: - UITableViewDelegate
-
-extension HotelSelectViewController: UITableViewDelegate {
-    
 }

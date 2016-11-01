@@ -27,6 +27,16 @@ class PlanTableView: UITableView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // 第一引数に何行目か、第二引数に表示したい値を入れることでLabelを生成し返してくれる
+    private func setLabel(rowNumber: CGFloat, hotelData: String) -> UILabel {
+        let label = UILabel()
+        label.text = hotelData
+        label.frame = CGRect(x: 0, y: (rowHeight / 3) * (rowNumber - 1), width: UIScreen.mainScreen().bounds.size.width, height: rowHeight / 3)
+        label.font = UIFont(name: "Arial", size: rowHeight / 4)
+        label.adjustsFontSizeToFitWidth = true
+        
+        return label
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -45,41 +55,20 @@ extension PlanTableView: UITableViewDataSource {
         // 再利用するCellを取得
         let cell = tableView.dequeueReusableCellWithIdentifier("planCell", forIndexPath: indexPath)
         
-        // 左端まで線を引く
-        cell.layoutMargins = UIEdgeInsetsZero
-        
         guard let guardHotelData = hotelData else { return cell }
-
+        
         // テーブルビューの高さをセル数に合わせて変更
-        tableView.frame.size.height = cell.bounds.size.height * CGFloat(guardHotelData.planName.count - 1)
+        tableView.frame.size.height = rowHeight * CGFloat(guardHotelData.planName.count - 1)
         
         // プラン名の設定
-        let planName = UILabel()
-        planName.text = guardHotelData.planName[indexPath.row + 1]
-        planName.frame = CGRect(x: 0, y: 0, width: cell.bounds.size.width, height: cell.bounds.size.height / 3)
-        planName.font = UIFont(name: "Arial", size: cell.bounds.size.height / 4)
-        planName.adjustsFontSizeToFitWidth = true
-        
+        cell.addSubview(setLabel(1, hotelData: guardHotelData.planName[indexPath.row + 1]))
         // 部屋タイプの設定
-        let roomName = UILabel()
-        roomName.text = "\t部屋: \(guardHotelData.roomName[indexPath.row + 1])"
-        roomName.frame = CGRect(x: 0, y: cell.bounds.size.height / 3, width: cell.bounds.size.width, height: cell.bounds.size.height / 3)
-        roomName.font = UIFont(name: "Arial", size: cell.bounds.size.height / 4)
-        roomName.adjustsFontSizeToFitWidth = true
-        
+        cell.addSubview(setLabel(2, hotelData: "\t部屋: \(guardHotelData.roomName[indexPath.row + 1])"))
         // プラン価格の設定
-        let planPrice = UILabel()
-        planPrice.text = "\t価格: \(guardHotelData.planSampleRateFrom[indexPath.row + 1])円"
-        planPrice.frame = CGRect(x: 0, y: (cell.bounds.size.height / 3) * 2, width: cell.bounds.size.width, height: cell.bounds.size.height / 3)
-        planPrice.font = UIFont(name: "Arial", size: cell.bounds.size.height / 4)
-        
-        cell.addSubview(planName)
-        cell.addSubview(roomName)
-        cell.addSubview(planPrice)
+        cell.addSubview(setLabel(3, hotelData: "\t価格: \(guardHotelData.planSampleRateFrom[indexPath.row + 1])円"))
         
         return cell
     }
-    
 }
 
 // MARK: - UITableViewDelegate
@@ -90,11 +79,9 @@ extension PlanTableView: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // safariで詳細ページに飛ばす
         guard let guardHotelData = hotelData else { return }
-        print(guardHotelData.planDetailUrl[indexPath.row + 1])
         let url = NSURL(string: guardHotelData.planDetailUrl[indexPath.row + 1])
         if UIApplication.sharedApplication().canOpenURL(url!){
             UIApplication.sharedApplication().openURL(url!)
         }
     }
-    
 }

@@ -18,6 +18,7 @@
 		5E36493F1DC2D375005094C4 /* SetupImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E36493E1DC2D375005094C4 /* SetupImage.swift */; };
 		5E4250211DBDB39D000EEF8A /* PlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4250201DBDB39D000EEF8A /* PlanTableView.swift */; };
 		5E5154DC1DB9E066009B9F0D /* HotelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5154DB1DB9E066009B9F0D /* HotelData.swift */; };
+		5E6373F31DC734C9005655CE /* SelectMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6373F21DC734C9005655CE /* SelectMenuTableView.swift */; };
 		5E7BD5741DB7046C007891A9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E326EF71DB701B3001F6604 /* Alamofire.framework */; };
 		5E7BD5751DB7046C007891A9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E326EF81DB701B3001F6604 /* SwiftyJSON.framework */; };
 		5EE564BD1DB7685B00AC5697 /* MenuPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE564BC1DB7685B00AC5697 /* MenuPageViewController.swift */; };
@@ -65,6 +66,7 @@
 		5E36493E1DC2D375005094C4 /* SetupImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetupImage.swift; sourceTree = "<group>"; };
 		5E4250201DBDB39D000EEF8A /* PlanTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableView.swift; sourceTree = "<group>"; };
 		5E5154DB1DB9E066009B9F0D /* HotelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelData.swift; sourceTree = "<group>"; };
+		5E6373F21DC734C9005655CE /* SelectMenuTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectMenuTableView.swift; sourceTree = "<group>"; };
 		5EE564BC1DB7685B00AC5697 /* MenuPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPageViewController.swift; sourceTree = "<group>"; };
 		5EE564BE1DB76A3D00AC5697 /* ContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
 		5EE564C11DB77FBD00AC5697 /* ConnectJalan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectJalan.swift; sourceTree = "<group>"; };
@@ -142,9 +144,9 @@
 			children = (
 				5E326EC91DB70032001F6604 /* AppDelegate.swift */,
 				5E5154DB1DB9E066009B9F0D /* HotelData.swift */,
-				5E4250201DBDB39D000EEF8A /* PlanTableView.swift */,
 				5E36493E1DC2D375005094C4 /* SetupImage.swift */,
-				5EE564C11DB77FBD00AC5697 /* ConnectJalan.swift */,
+				5E6373F41DC73A14005655CE /* Tables */,
+				5E6373F51DC73A3B005655CE /* ConnectAPI */,
 				5EE564C01DB76A4600AC5697 /* Controllers */,
 				5E326ED01DB70032001F6604 /* Assets.xcassets */,
 				5E326ED51DB70032001F6604 /* Info.plist */,
@@ -168,6 +170,23 @@
 				5E326EEB1DB70033001F6604 /* Info.plist */,
 			);
 			path = HotelSearchUITests;
+			sourceTree = "<group>";
+		};
+		5E6373F41DC73A14005655CE /* Tables */ = {
+			isa = PBXGroup;
+			children = (
+				5E6373F21DC734C9005655CE /* SelectMenuTableView.swift */,
+				5E4250201DBDB39D000EEF8A /* PlanTableView.swift */,
+			);
+			name = Tables;
+			sourceTree = "<group>";
+		};
+		5E6373F51DC73A3B005655CE /* ConnectAPI */ = {
+			isa = PBXGroup;
+			children = (
+				5EE564C11DB77FBD00AC5697 /* ConnectJalan.swift */,
+			);
+			name = ConnectAPI;
 			sourceTree = "<group>";
 		};
 		5EE564C01DB76A4600AC5697 /* Controllers */ = {
@@ -459,6 +478,7 @@
 				5EE564C21DB77FBD00AC5697 /* ConnectJalan.swift in Sources */,
 				5E4250211DBDB39D000EEF8A /* PlanTableView.swift in Sources */,
 				5E326ECC1DB70032001F6604 /* HotelSelectViewController.swift in Sources */,
+				5E6373F31DC734C9005655CE /* SelectMenuTableView.swift in Sources */,
 				5E326ECA1DB70032001F6604 /* AppDelegate.swift in Sources */,
 				5EE564BD1DB7685B00AC5697 /* MenuPageViewController.swift in Sources */,
 			);
