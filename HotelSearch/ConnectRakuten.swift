@@ -35,21 +35,30 @@ final class ConnectRakuten: NSObject {
     /// 詳細地区
     private let detailDistrict = "A"
     
+    // MARK: - スタティック関数
+    
     /// お勧めのホテルのデータを取ってくる
     func connectRecommendHotel() -> [HotelData] {
         
         let url = NSURL(string: "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20131024?applicationId=\(APIKey)&format=json&largeClassCode=\(country)&middleClassCode=\(prefectures)&smallClassCode=\(district)&detailClassCode=\(detailDistrict)&hits=\(count)&sort=\(order)")
-
-        guard let guardUrl = url else { return [HotelData()] }
         
+        guard let guardUrl = url else { return [HotelData()] }
         Alamofire.request(.GET, guardUrl).responseJSON { response in
             
-            print(response.description)
-            print("nanndehairanaino?")
-            
+            guard let object = response.result.value else { return }
+            let json = JSON(object)
+            self.setJSON(json)
         }
-        print("oioimajika")
-        
         return [HotelData()]
+    }
+    
+    // MARK: - プライベート関数
+    
+    private func setJSON(json: JSON) {
+        for i in 0 ..< json["hotels"].count {
+            print("koko")
+            print(json["hotels"][i]["hotel"][0]["hotelBasicInfo"]["hotelName"].stringValue)
+            print(json["hotels"][i]["hotel"][1]["roomInfo"][0]["roomBasicInfo"]["planName"].stringValue)
+        }
     }
 }

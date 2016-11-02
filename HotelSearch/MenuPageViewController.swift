@@ -108,9 +108,9 @@ extension MenuPageViewController: UIPageViewControllerDelegate {
         if let selectView: HotelSelectViewController = parentViewController as? HotelSelectViewController {
             for planTable in selectView.planTables {
                 if planTable.hidden == false {
-                    // pageViewをスワイプさせた際にプラン一覧を一緒に変更
-                    print("sotti")
+                    // PageViewがスワイプされた時にプラン一覧が開かれていた場合そのプラン一覧を閉じる
                     planTable.hidden = true
+                    // 次のプラン一覧を開く
                     selectView.planTables[index].hidden = false
                     // プラン一覧の高さに合わせてScrollViewを変更する関数を呼び出す
                     selectView.updatePlanTableHeight(index)

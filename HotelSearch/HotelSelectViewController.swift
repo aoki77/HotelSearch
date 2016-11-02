@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 
 class HotelSelectViewController: UIViewController {
     
@@ -33,6 +34,7 @@ class HotelSelectViewController: UIViewController {
         setupPageView()
         setupPlanTable()
         setupSelectTable()
+        
     }
     
     // MARK: - プライベート関数
