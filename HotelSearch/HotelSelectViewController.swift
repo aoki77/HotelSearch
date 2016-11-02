@@ -27,6 +27,7 @@ class HotelSelectViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        ConnectRakuten().connectRecommendHotel()
         setupData()
         setupScrollView()
         setupPageView()
@@ -38,7 +39,7 @@ class HotelSelectViewController: UIViewController {
     
     /// APIからデータを取ってきて格納する
     private func setupData() {
-        hotelData = ConnectJalan().connectAPI()
+        hotelData = ConnectJalan().connectRecommendHotel()
     }
     
     /// NaviBarとStatusBarの高さを足した値を返す

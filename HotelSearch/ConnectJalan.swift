@@ -22,7 +22,7 @@ final class ConnectJalan: NSObject {
     private let order = 4
     
     /// 都道府県番号
-    private let pref = 120000
+    private let prefectures = 120000
     
     // MARK: - 変数プロパティ
     
@@ -34,14 +34,14 @@ final class ConnectJalan: NSObject {
     
     private var PlanDetailFlag = true
     
-    // MARK: - プライベート関数
-    
     /// それぞれのタグのフラグ(key名はタグ名と同一)
     private var elementFlgs = ["HotelID": false, "HotelName": false, "Prefecture": false, "LargeArea": false, "HotelType": false, "HotelCatchCopy": false, "PictureURL": false, "PlanName": false, "RoomName": false, "PlanDetailURL": false, "PlanSampleRateFrom": false ]
     
-    /// APIを叩き必要なデータを取ってくる
-    func connectAPI() -> [HotelData] {
-        let url = "http://jws.jalan.net/APIAdvance/HotelSearch/V1/?key=\(APIKey)&xml_ptn=2&pref=\(pref)&count=\(count)&order=\(order)"
+    // MARK: - スタティック関数
+    
+    /// お勧めのホテルのデータを取ってくる
+    func connectRecommendHotel() -> [HotelData] {
+        let url = "http://jws.jalan.net/APIAdvance/HotelSearch/V1/?key=\(APIKey)&xml_ptn=2&pref=\(prefectures)&count=\(count)&order=\(order)"
         let encodedUrl = url.stringByAddingPercentEncodingWithAllowedCharacters(NSCharacterSet.URLQueryAllowedCharacterSet())!
         let url2 = NSURL(string: encodedUrl)
         
