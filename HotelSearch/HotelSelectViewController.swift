@@ -22,13 +22,12 @@ class HotelSelectViewController: UIViewController {
     private var pageView = MenuPageViewController()
     private var planTable: PlanTableView?
     var planTables = [PlanTableView]()
-    var hotelData: [HotelData]?
+    var hotelData: [HotelData]!
     
     // MARK: - ライフサイクル関数
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        ConnectRakuten().connectRecommendHotel()
         setupData()
         setupScrollView()
         setupPageView()
@@ -42,6 +41,7 @@ class HotelSelectViewController: UIViewController {
     /// APIからデータを取ってきて格納する
     private func setupData() {
         hotelData = ConnectJalan().connectRecommendHotel()
+        hotelData.appendContentsOf(ConnectRakuten().connectRecommendHotel())
     }
     
     /// NaviBarとStatusBarの高さを足した値を返す
@@ -73,15 +73,14 @@ class HotelSelectViewController: UIViewController {
     /// プラン表示用テーブルをセット
     private func setupPlanTable() {
         guard let guardHotelData = hotelData else { return }
-        for num in 0 ..< 10 {
+        for num in 0 ..< guardHotelData.count {
             planTable = PlanTableView(frame: CGRectMake(0, barHeight() + pageView.view.bounds.height, view.bounds.size.width, (view.bounds.size.height - (barHeight() + pageView.view.bounds.height) / 3) * 2 ))
             guard let guardPlanTable = planTable else { return }
             guardPlanTable.hotelData = guardHotelData[num]
             guardPlanTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "planCell")
-            guardPlanTable.rowHeight = view.bounds.size.height / 10
+            guardPlanTable.rowHeight = view.bounds.size.height / CGFloat(guardHotelData.count)
             guardPlanTable.hidden = true
             guardPlanTable.scrollEnabled = false
-//            guardPlanTable.layoutMargins = UIEdgeInsetsZero
             planTables.append(guardPlanTable)
             scrollView.addSubview(guardPlanTable)
         }

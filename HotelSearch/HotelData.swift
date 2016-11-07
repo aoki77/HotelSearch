@@ -9,11 +9,9 @@
 import UIKit
 
 class HotelData {
-    var hotelId: String = ""
     var hotelName: String = ""
     var prefecture: String = ""
     var largeArea: String = ""
-    var hotelType: String = ""
     var hotelCatchCopy: String = ""
     var pictureUrl: String = ""
     var planName: [String] = [""]

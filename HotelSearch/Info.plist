@@ -33,6 +33,11 @@
 	<dict>
 		<key>NSExceptionDomains</key>
 		<dict>
+			<key>img.travel.rakuten.co.jp</key>
+			<dict>
+				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>
+				<true/>
+			</dict>
 			<key>jws.jalan.net</key>
 			<dict>
 				<key>NSTemporaryExceptionAllowsInsecureHTTPLoads</key>

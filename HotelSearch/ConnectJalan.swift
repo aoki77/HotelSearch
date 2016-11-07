@@ -16,13 +16,13 @@ final class ConnectJalan: NSObject {
     private let APIKey = "ari157d11cb342"
     
     /// 表示件数
-    private let count = 10
+    private let count = 5
     
     /// 表示の並び順
     private let order = 4
     
     /// 都道府県番号
-    private let prefectures = 120000
+    private let prefectures = 130000
     
     // MARK: - 変数プロパティ
     
@@ -35,7 +35,7 @@ final class ConnectJalan: NSObject {
     private var PlanDetailFlag = true
     
     /// それぞれのタグのフラグ(key名はタグ名と同一)
-    private var elementFlgs = ["HotelID": false, "HotelName": false, "Prefecture": false, "LargeArea": false, "HotelType": false, "HotelCatchCopy": false, "PictureURL": false, "PlanName": false, "RoomName": false, "PlanDetailURL": false, "PlanSampleRateFrom": false ]
+    private var elementFlgs = ["HotelName": false, "Prefecture": false, "LargeArea": false, "HotelCatchCopy": false, "PictureURL": false, "PlanName": false, "RoomName": false, "PlanDetailURL": false, "PlanSampleRateFrom": false ]
     
     // MARK: - スタティック関数
     
@@ -59,7 +59,6 @@ final class ConnectJalan: NSObject {
         }
         return hotelDataArray
     }
-    
 }
 
 // MARK: - NSXMLParserDelegate
@@ -86,42 +85,44 @@ extension ConnectJalan: NSXMLParserDelegate {
     
     /// 開始タグと終了タグでくくられたデータがあったときに実行されるメソッド
     func parser(parser: NSXMLParser, foundCharacters string: String) {
+        guard let guardHoteldata = hotelData else { return }
         for (name, flg) in elementFlgs {
             // フラグがtrueかどうか判定し、その後さらにnameを判定して正しい変数の中に値を入れる
             if flg {
                 switch name {
-                case "HotelID":
-                    hotelData!.hotelId = string
                 case "HotelName":
-                    hotelData!.hotelName = string
+                    guardHoteldata.hotelName = string
                 case "Prefecture":
-                    hotelData!.prefecture = string
+                    guardHoteldata.prefecture = string
                 case "LargeArea":
-                    hotelData!.largeArea = string
-                case "HotelType":
-                    hotelData!.hotelType = string
+                    guardHoteldata.largeArea = string
                 case "HotelCatchCopy":
-                    hotelData!.hotelCatchCopy = string
+                    guardHoteldata.hotelCatchCopy = string
                 case "PictureURL":
-                    hotelData!.pictureUrl = string
+                    guardHoteldata.pictureUrl = string
                 case "PlanName":
+                    /*
+                     閉じタグが来る前に再度この分岐に入ってきた時は前の文字列と合体させる
+                     xmlパーサは文字列に数値または記号が入ってきた場合そこで一回文字列を区切って出力する
+                     そのため、手動で前の文字列と合体させて出力する必要がある
+                    */
                     if planNameFlag {
-                        hotelData!.planName.append(string)
+                        guardHoteldata.planName.append(string)
                         planNameFlag = false
                     } else {
-                        hotelData!.planName[hotelData!.planName.count - 1] = hotelData!.planName[hotelData!.planName.count - 1] + string
+                        guardHoteldata.planName[guardHoteldata.planName.count - 1] = guardHoteldata.planName[guardHoteldata.planName.count - 1] + string
                     }
                 case "RoomName":
-                    hotelData!.roomName.append(string)
+                    guardHoteldata.roomName.append(string)
                 case "PlanDetailURL":
                     if PlanDetailFlag {
-                        hotelData!.planDetailUrl.append(string)
+                        guardHoteldata.planDetailUrl.append(string)
                         PlanDetailFlag = false
                     } else {
-                        hotelData!.planDetailUrl[hotelData!.planDetailUrl.count - 1] = hotelData!.planDetailUrl[hotelData!.planDetailUrl.count - 1] + string
+                        guardHoteldata.planDetailUrl[guardHoteldata.planDetailUrl.count - 1] = guardHoteldata.planDetailUrl[guardHoteldata.planDetailUrl.count - 1] + string
                     }
                 case "PlanSampleRateFrom":
-                    hotelData!.planSampleRateFrom.append(string)
+                    guardHoteldata.planSampleRateFrom.append(string)
                 default:
                     break
                 }

@@ -41,11 +41,10 @@ class MenuPageViewController: UIPageViewController {
         delegate = self
         
         guard let guardHotelData = hotelData else { return }
-        // 10画面分Viewを用意する
-        for num in 0 ..< 10 {
+        // 必要数Viewを用意する
+        for num in 0 ..< guardHotelData.count {
             let contentView = ContentsViewController()
             contentView.contentNum = num
-            //contentView.view.tag = num
             contentView.hotelData = guardHotelData[num]
             contentViews.append(contentView)
         }
