@@ -52,6 +52,7 @@ final class ConnectRakuten: NSObject {
             guard let object = response.result.value else { return }
             let json = JSON(object)
             self.setJSON(json)
+            
             //ロックの解除
             keepAlive = false
         }
@@ -59,7 +60,7 @@ final class ConnectRakuten: NSObject {
         //ロックが解除されるまで待つ
         let runLoop = NSRunLoop.currentRunLoop()
         while keepAlive && runLoop.runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 0.1)) {
-                // 0.1秒毎の処理なので、処理が止まらない
+            // 0.1秒毎の処理なので、処理が止まらない
         }
         
         return hotelDataArray

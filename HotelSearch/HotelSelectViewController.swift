@@ -98,6 +98,9 @@ class HotelSelectViewController: UIViewController {
         // スクロール禁止
         selectMenuTable.scrollEnabled = false
         
+        // セルの高さを指定
+        selectMenuTable.rowHeight = view.bounds.size.height / CGFloat(hotelData!.count)
+        
         // Viewに追加
         scrollView.addSubview(selectMenuTable)
     }
@@ -131,7 +134,7 @@ class HotelSelectViewController: UIViewController {
     
     /// プラン表示用テーブルを換算しないようにScrollViewのコンテンツサイズを変更
     func updateNonePlanTableHeight() {
-        scrollView.contentSize.height = pageView.view.bounds.size.height + barHeight()
+        scrollView.contentSize.height = pageView.view.bounds.size.height + barHeight() + selectMenuTable.bounds.size.height
         selectMenuTable.frame.origin.y = pageView.view.bounds.size.height + barHeight()
     }
 }
