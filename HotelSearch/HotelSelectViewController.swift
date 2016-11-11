@@ -17,7 +17,7 @@ class HotelSelectViewController: UIViewController {
     
     // MARK: - 変数プロパティ
     
-    private var selectMenuTable = SelectMenuTableView()
+    private var searchMenuTable = SearchMenuTableView()
     private var statusBar: UIStatusBarStyle?
     private var pageView = MenuPageViewController()
     private var planTable: PlanTableView?
@@ -32,8 +32,8 @@ class HotelSelectViewController: UIViewController {
         setupScrollView()
         setupPageView()
         setupPlanTable()
-        setupSelectTable()
-        
+        setupSearchMenuTable()
+        updateNonePlanTableHeight()
     }
     
     // MARK: - プライベート関数
@@ -87,31 +87,37 @@ class HotelSelectViewController: UIViewController {
     }
     
     /// 検索用テーブルをセット
-    private func setupSelectTable() {
+    private func setupSearchMenuTable() {
         
         // TableViewの生成する(status barの高さ分ずらして表示).
-        selectMenuTable = SelectMenuTableView(frame: CGRect(x: 0, y: ((view.bounds.size.height - barHeight()) / 3) + barHeight(), width: view.bounds.size.width, height: (((view.bounds.size.height - barHeight()) / 3) * 2)))
+        searchMenuTable = SearchMenuTableView()
         
         // Cell名の登録
-        selectMenuTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "selectMenuCell")
+        searchMenuTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "searchMenuCell")
         
         // スクロール禁止
-        selectMenuTable.scrollEnabled = false
+        searchMenuTable.scrollEnabled = false
         
         // セルの高さを指定
-        selectMenuTable.rowHeight = view.bounds.size.height / CGFloat(hotelData!.count)
+        searchMenuTable.rowHeight = view.bounds.size.height / CGFloat(hotelData!.count)
+        
+        // セクションのヘッダーの高さ
+        searchMenuTable.sectionHeaderHeight =  30
+
+        // テーブルの幅、高さ(セルの数が9、ヘッダーの数が2)
+        searchMenuTable.frame = CGRectMake(0, barHeight() + pageView.view.bounds.height, view.bounds.size.width, (searchMenuTable.rowHeight * 5) + (searchMenuTable.rowHeight * 2 * 4) + (searchMenuTable.sectionHeaderHeight * 2) )
         
         // Viewに追加
-        scrollView.addSubview(selectMenuTable)
+        scrollView.addSubview(searchMenuTable)
     }
     
     /// ScrollViewをセット
     private func setupScrollView() {
         // ScrollViewを生成
         scrollView.frame = CGRectMake(0, (-1 * barHeight()), view.frame.size.width, view.frame.size.height + barHeight())
-        scrollView.contentSize = CGSizeMake(view.bounds.size.width, view.bounds.size.height)
         
         view.addSubview(scrollView)
+        
     }
     
     // MARK: - スタティック関数
@@ -128,13 +134,24 @@ class HotelSelectViewController: UIViewController {
     
     /// プラン表示用テーブルに合わせてScrollViewのコンテンツサイズを変更
     func updatePlanTableHeight(contentNum: Int) {
-        scrollView.contentSize.height =  pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight() + selectMenuTable.bounds.size.height
-        selectMenuTable.frame.origin.y = pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight()
+        scrollView.contentSize.height =  pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight() + searchMenuTable.bounds.size.height
+        searchMenuTable.frame.origin.y = pageView.view.bounds.size.height + planTables[contentNum].bounds.size.height + barHeight()
     }
     
     /// プラン表示用テーブルを換算しないようにScrollViewのコンテンツサイズを変更
     func updateNonePlanTableHeight() {
-        scrollView.contentSize.height = pageView.view.bounds.size.height + barHeight() + selectMenuTable.bounds.size.height
-        selectMenuTable.frame.origin.y = pageView.view.bounds.size.height + barHeight()
+        scrollView.contentSize.height = pageView.view.bounds.size.height + barHeight() + searchMenuTable.bounds.size.height
+        searchMenuTable.frame.origin.y = pageView.view.bounds.size.height + barHeight()
     }
 }
+
+// MARK: - UIPopoverPresentationControllerDelegate
+
+extension HotelSelectViewController: UIPopoverPresentationControllerDelegate {
+    
+    /// iPhoneでpopoverを表示するための設定
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+}
+

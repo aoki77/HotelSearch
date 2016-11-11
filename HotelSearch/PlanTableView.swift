@@ -43,13 +43,13 @@ class PlanTableView: UITableView {
 
 extension PlanTableView: UITableViewDataSource {
     
-    /// Cellの総数を返すデータソースメソッド
+    /// Cellの総数を返す
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         guard let guardHotelData = hotelData else { return 0 }
         return guardHotelData.planName.count - 1
     }
     
-    /// Cellに値を設定するデータソースメソッド
+    /// Cellに値を設定
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         // 再利用するCellを取得
@@ -75,7 +75,7 @@ extension PlanTableView: UITableViewDataSource {
 
 extension PlanTableView: UITableViewDelegate {
     
-    /// Cellが選択された際に呼び出されるデリゲートメソッド
+    /// Cellが選択された際に呼び出される
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         // safariで詳細ページに飛ばす
         guard let guardHotelData = hotelData else { return }

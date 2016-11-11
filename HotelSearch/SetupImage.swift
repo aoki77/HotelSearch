@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SetupImage {
+final class SetupImage {
     
     /// 画像のURL(String)を送るとImageの状態にして返してくれる
     func setImage(url: String) -> UIImage {
