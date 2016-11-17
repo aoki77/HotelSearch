@@ -22,10 +22,13 @@
 		5E3FC55F1DD2B13100B3ED5E /* PeoplePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3FC55E1DD2B13100B3ED5E /* PeoplePickerView.swift */; };
 		5E3FC5631DD4524900B3ED5E /* Popover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3FC5621DD4524900B3ED5E /* Popover.swift */; };
 		5E4250211DBDB39D000EEF8A /* PlanTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4250201DBDB39D000EEF8A /* PlanTableView.swift */; };
+		5E4A2A4C1DD93A2C00BE7279 /* CalendarCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E4A2A4B1DD93A2C00BE7279 /* CalendarCollectionViewController.swift */; };
 		5E5154DC1DB9E066009B9F0D /* HotelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5154DB1DB9E066009B9F0D /* HotelData.swift */; };
+		5E5B59161DDAFDAA002714B3 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E5B59151DDAFDAA002714B3 /* CalendarCell.swift */; };
 		5E6373F31DC734C9005655CE /* SearchMenuTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6373F21DC734C9005655CE /* SearchMenuTableView.swift */; };
 		5E7BD5741DB7046C007891A9 /* Alamofire.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E326EF71DB701B3001F6604 /* Alamofire.framework */; };
 		5E7BD5751DB7046C007891A9 /* SwiftyJSON.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E326EF81DB701B3001F6604 /* SwiftyJSON.framework */; };
+		5E81A6211DD93FAC0044965D /* CalendarLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E81A6201DD93FAC0044965D /* CalendarLayout.swift */; };
 		5EE564BD1DB7685B00AC5697 /* MenuPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE564BC1DB7685B00AC5697 /* MenuPageViewController.swift */; };
 		5EE564BF1DB76A3D00AC5697 /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE564BE1DB76A3D00AC5697 /* ContentsViewController.swift */; };
 		5EE564C21DB77FBD00AC5697 /* ConnectJalan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EE564C11DB77FBD00AC5697 /* ConnectJalan.swift */; };
@@ -75,8 +78,11 @@
 		5E3FC55E1DD2B13100B3ED5E /* PeoplePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PeoplePickerView.swift; sourceTree = "<group>"; };
 		5E3FC5621DD4524900B3ED5E /* Popover.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Popover.swift; sourceTree = "<group>"; };
 		5E4250201DBDB39D000EEF8A /* PlanTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanTableView.swift; sourceTree = "<group>"; };
+		5E4A2A4B1DD93A2C00BE7279 /* CalendarCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCollectionViewController.swift; sourceTree = "<group>"; };
 		5E5154DB1DB9E066009B9F0D /* HotelData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelData.swift; sourceTree = "<group>"; };
+		5E5B59151DDAFDAA002714B3 /* CalendarCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		5E6373F21DC734C9005655CE /* SearchMenuTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchMenuTableView.swift; sourceTree = "<group>"; };
+		5E81A6201DD93FAC0044965D /* CalendarLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CalendarLayout.swift; sourceTree = "<group>"; };
 		5EE564BC1DB7685B00AC5697 /* MenuPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuPageViewController.swift; sourceTree = "<group>"; };
 		5EE564BE1DB76A3D00AC5697 /* ContentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
 		5EE564C11DB77FBD00AC5697 /* ConnectJalan.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectJalan.swift; sourceTree = "<group>"; };
@@ -188,6 +194,8 @@
 			children = (
 				5E36493E1DC2D375005094C4 /* SetupImage.swift */,
 				5E353D431DD1717700B4026E /* DateFormatters.swift */,
+				5E81A6201DD93FAC0044965D /* CalendarLayout.swift */,
+				5E5B59151DDAFDAA002714B3 /* CalendarCell.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -224,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				5E326ECB1DB70032001F6604 /* HotelSelectViewController.swift */,
+				5E4A2A4B1DD93A2C00BE7279 /* CalendarCollectionViewController.swift */,
 				5EE564BC1DB7685B00AC5697 /* MenuPageViewController.swift */,
 				5EE564BE1DB76A3D00AC5697 /* ContentsViewController.swift */,
 			);
@@ -504,12 +513,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E353D441DD1717700B4026E /* DateFormatters.swift in Sources */,
+				5E5B59161DDAFDAA002714B3 /* CalendarCell.swift in Sources */,
 				5E36493F1DC2D375005094C4 /* SetupImage.swift in Sources */,
 				5E3FC55F1DD2B13100B3ED5E /* PeoplePickerView.swift in Sources */,
+				5E81A6211DD93FAC0044965D /* CalendarLayout.swift in Sources */,
 				5E3FC5631DD4524900B3ED5E /* Popover.swift in Sources */,
 				5E5154DC1DB9E066009B9F0D /* HotelData.swift in Sources */,
 				5EE564BF1DB76A3D00AC5697 /* ContentsViewController.swift in Sources */,
 				5EE564C21DB77FBD00AC5697 /* ConnectJalan.swift in Sources */,
+				5E4A2A4C1DD93A2C00BE7279 /* CalendarCollectionViewController.swift in Sources */,
 				5E4250211DBDB39D000EEF8A /* PlanTableView.swift in Sources */,
 				5E326ECC1DB70032001F6604 /* HotelSelectViewController.swift in Sources */,
 				5E6373F31DC734C9005655CE /* SearchMenuTableView.swift in Sources */,

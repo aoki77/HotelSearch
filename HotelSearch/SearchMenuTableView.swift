@@ -26,7 +26,6 @@ class SearchMenuTableView: UITableView {
     override init(frame: CGRect, style: UITableViewStyle) {
         super.init(frame: frame, style: style)
         dataSource = self
-        delegate = self
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -74,6 +73,7 @@ class SearchMenuTableView: UITableView {
         } else if indexPath.row == 3 {
             cell.addSubview(setPeopleCell())
         }
+        
         //        // 偶数の時はピッカーを表示
         //        if indexPath.row % 2 == 0 {
         //            cell.addSubview(setTitleLabel(indexPath))
@@ -246,17 +246,6 @@ extension SearchMenuTableView: UITableViewDataSource {
 //        } else {
 //            return rowHeight
 //        }
-    }
-}
-
-// MARK: - UITableViewDelegate
-
-extension SearchMenuTableView: UITableViewDelegate {
-    
-    /// Cellが選択された際に呼び出される
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.row == 0 {
-        }
     }
 }
 

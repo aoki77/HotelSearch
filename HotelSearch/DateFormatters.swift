@@ -10,11 +10,35 @@ import UIKit
 
 final class DateFormatters {
     
-    /// 「yyyy年MM月」を返す
-    let dateFormatter: NSDateFormatter = {
+    /// 年月のフォーマッター
+    let dateFormatterYearMonth: NSDateFormatter = {
         let dateFormatter = NSDateFormatter()
         dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
-        dateFormatter.dateFormat = "yyyy年MM月"
+        dateFormatter.dateFormat = "yyyy/MM"
+        return dateFormatter
+    }()
+    
+    /// 年のフォーマッター
+    let dateFormatterYear: NSDateFormatter = {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+        dateFormatter.dateFormat = "yyyy"
+        return dateFormatter
+    }()
+    
+    /// 月のフォーマッター
+    let dateFormatterMonth: NSDateFormatter = {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+        dateFormatter.dateFormat = "MM"
+        return dateFormatter
+    }()
+    
+    /// 日のフォーマッター
+    let dateFormatterDay: NSDateFormatter = {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+        dateFormatter.dateFormat = "d"
         return dateFormatter
     }()
     

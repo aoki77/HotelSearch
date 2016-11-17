@@ -101,7 +101,6 @@ class ContentsViewController: UIViewController {
                     selectView.hidePlanTalbe(guardContentNum)
                     planTableFlag = false
                     selectView.updateNonePlanTableHeight()
-                    
                 } else {
                     selectView.outputPlanTable(guardContentNum)
                     planTableFlag = true

@@ -103,9 +103,11 @@ class HotelSelectViewController: UIViewController {
         
         // セクションのヘッダーの高さ
         searchMenuTable.sectionHeaderHeight =  30
-
+        
+        searchMenuTable.delegate = self
+        
         // テーブルの幅、高さ(セルの数が9、ヘッダーの数が2)
-        searchMenuTable.frame = CGRectMake(0, barHeight() + pageView.view.bounds.height, view.bounds.size.width, (searchMenuTable.rowHeight * 5) + (searchMenuTable.rowHeight * 2 * 4) + (searchMenuTable.sectionHeaderHeight * 2) )
+        searchMenuTable.frame = CGRectMake(0, barHeight() + pageView.view.bounds.height, view.bounds.size.width, (searchMenuTable.rowHeight * 5) + (searchMenuTable.rowHeight * 2 * 4) + (searchMenuTable.sectionHeaderHeight * 2))
         
         // Viewに追加
         scrollView.addSubview(searchMenuTable)
@@ -115,9 +117,7 @@ class HotelSelectViewController: UIViewController {
     private func setupScrollView() {
         // ScrollViewを生成
         scrollView.frame = CGRectMake(0, (-1 * barHeight()), view.frame.size.width, view.frame.size.height + barHeight())
-        
         view.addSubview(scrollView)
-        
     }
     
     // MARK: - スタティック関数
@@ -151,7 +151,22 @@ extension HotelSelectViewController: UIPopoverPresentationControllerDelegate {
     
     /// iPhoneでpopoverを表示するための設定
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        
         return UIModalPresentationStyle.None
     }
 }
 
+extension HotelSelectViewController: UITableViewDelegate {
+    
+    /// SearchMenuTableViewのCellが選択された際に呼び出される
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.row == 0 {
+            let calendar = CalendarCollectionViewController()
+            calendar.collectionView = UICollectionView(frame: CGRectZero, collectionViewLayout: CalendarLayout())
+            calendar.collectionView?.frame = CGRect(x: 0, y: barHeight(), width: view.bounds.size.width, height: view.bounds.size.height - barHeight())
+            calendar.collectionView!.registerClass(CalendarCell.self, forCellWithReuseIdentifier: "calendarCell")
+            
+            self.navigationController?.pushViewController(calendar, animated: true)
+        }
+    }
+}
