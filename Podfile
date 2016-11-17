@@ -9,6 +9,7 @@ target 'HotelSearch' do
     pod 'RealmSwift', '2.0.2'
     pod 'Alamofire', '3.5.0'
     pod 'SwiftyJSON', '2.4.0'
+    pod 'CalculateCalendarLogic'
 
   target 'HotelSearchTests' do
     inherit! :search_paths
