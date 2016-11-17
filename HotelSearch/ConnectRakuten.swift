@@ -47,9 +47,11 @@ final class ConnectRakuten: NSObject {
         let url = NSURL(string: "https://app.rakuten.co.jp/services/api/Travel/VacantHotelSearch/20131024?applicationId=\(APIKey)&format=json&largeClassCode=\(country)&middleClassCode=\(prefectures)&smallClassCode=\(district)&detailClassCode=\(detailDistrict)&hits=\(count)&sort=\(order)")
         
         guard let guardUrl = url else { return [HotelData()] }
-        
         Alamofire.request(.GET, guardUrl).responseJSON { response in
-            guard let object = response.result.value else { return }
+            guard let object = response.result.value else {
+                keepAlive = false
+                return
+            }
             let json = JSON(object)
             self.setJSON(json)
             
@@ -62,7 +64,6 @@ final class ConnectRakuten: NSObject {
         while keepAlive && runLoop.runMode(NSDefaultRunLoopMode, beforeDate: NSDate(timeIntervalSinceNow: 0.1)) {
             // 0.1秒毎の処理なので、処理が止まらない
         }
-        
         return hotelDataArray
     }
     
@@ -70,7 +71,6 @@ final class ConnectRakuten: NSObject {
     
     /// HotelDataの値をHotelDataArrayに入れる
     private func setJSON(json: JSON) {
-        
         for i in 0 ..< json["hotels"].count {
             let hotelData = HotelData()
             hotelData.hotelName = json["hotels"][i]["hotel"][0]["hotelBasicInfo"]["hotelName"].stringValue

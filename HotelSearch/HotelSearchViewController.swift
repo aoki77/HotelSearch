@@ -9,7 +9,7 @@
 import UIKit
 import Alamofire
 
-class HotelSelectViewController: UIViewController {
+class HotelSearchViewController: UIViewController {
     
     // MARK: - 定数プロパティ
     
@@ -23,6 +23,7 @@ class HotelSelectViewController: UIViewController {
     private var planTable: PlanTableView?
     var planTables = [PlanTableView]()
     var hotelData: [HotelData]!
+    var lodgingDate: String?
     
     // MARK: - ライフサイクル関数
     
@@ -41,7 +42,7 @@ class HotelSelectViewController: UIViewController {
     /// APIからデータを取ってきて格納する
     private func setupData() {
         hotelData = ConnectJalan().connectRecommendHotel()
-        hotelData.appendContentsOf(ConnectRakuten().connectRecommendHotel())
+//        hotelData.appendContentsOf(ConnectRakuten().connectRecommendHotel())
     }
     
     /// NaviBarとStatusBarの高さを足した値を返す
@@ -78,7 +79,7 @@ class HotelSelectViewController: UIViewController {
             guard let guardPlanTable = planTable else { return }
             guardPlanTable.hotelData = guardHotelData[num]
             guardPlanTable.registerClass(UITableViewCell.self, forCellReuseIdentifier: "planCell")
-            guardPlanTable.rowHeight = view.bounds.size.height / CGFloat(guardHotelData.count)
+            guardPlanTable.rowHeight = view.bounds.size.height / 10
             guardPlanTable.hidden = true
             guardPlanTable.scrollEnabled = false
             planTables.append(guardPlanTable)
@@ -99,7 +100,7 @@ class HotelSelectViewController: UIViewController {
         searchMenuTable.scrollEnabled = false
         
         // セルの高さを指定
-        searchMenuTable.rowHeight = view.bounds.size.height / CGFloat(hotelData!.count)
+        searchMenuTable.rowHeight = view.bounds.size.height / 10
         
         // セクションのヘッダーの高さ
         searchMenuTable.sectionHeaderHeight =  30
@@ -143,11 +144,17 @@ class HotelSelectViewController: UIViewController {
         scrollView.contentSize.height = pageView.view.bounds.size.height + barHeight() + searchMenuTable.bounds.size.height
         searchMenuTable.frame.origin.y = pageView.view.bounds.size.height + barHeight()
     }
+    
+    /// 検索用テーブルを再更新
+    func updateTable() {
+        searchMenuTable.lodgingDate = lodgingDate
+        searchMenuTable.reloadData()
+    }
 }
 
 // MARK: - UIPopoverPresentationControllerDelegate
 
-extension HotelSelectViewController: UIPopoverPresentationControllerDelegate {
+extension HotelSearchViewController: UIPopoverPresentationControllerDelegate {
     
     /// iPhoneでpopoverを表示するための設定
     func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
@@ -156,7 +163,7 @@ extension HotelSelectViewController: UIPopoverPresentationControllerDelegate {
     }
 }
 
-extension HotelSelectViewController: UITableViewDelegate {
+extension HotelSearchViewController: UITableViewDelegate {
     
     /// SearchMenuTableViewのCellが選択された際に呼び出される
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

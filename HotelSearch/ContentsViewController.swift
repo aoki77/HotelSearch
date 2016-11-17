@@ -92,16 +92,16 @@ class ContentsViewController: UIViewController {
         
         // 親画面(HotelSelectViewController)に値を送る
         if let pageView: MenuPageViewController = parentViewController as? MenuPageViewController {
-            if let selectView: HotelSelectViewController = pageView.parentViewController as? HotelSelectViewController {
-                
+            if let selectView: HotelSearchViewController = pageView.parentViewController as? HotelSearchViewController {
                 guard let guardContentNum = contentNum else { return }
-                
                 // フラグ及びScrollViewの高さを更新する
                 if planTableFlag {
+                    print(selectView)
                     selectView.hidePlanTalbe(guardContentNum)
                     planTableFlag = false
                     selectView.updateNonePlanTableHeight()
                 } else {
+                    print(selectView)
                     selectView.outputPlanTable(guardContentNum)
                     planTableFlag = true
                     selectView.updatePlanTableHeight(guardContentNum)

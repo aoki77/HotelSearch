@@ -42,4 +42,11 @@ final class DateFormatters {
         return dateFormatter
     }()
     
+    /// 年月日のフォーマッター(日本語)
+    let  dateFormatterYearMonthDay: NSDateFormatter = {
+        let dateFormatter = NSDateFormatter()
+        dateFormatter.locale = NSLocale(localeIdentifier: "en_US")
+        dateFormatter.dateFormat = "yyyy年MM月dd日"
+        return dateFormatter
+    }()
 }

@@ -55,8 +55,6 @@ class MenuPageViewController: UIPageViewController {
     private func setupPageControl() {
         pageControl = UIPageControl(frame: CGRectMake(0, (view.bounds.size.height / 5) * 4, view.bounds.size.width, view.bounds.size.height / 5))
         
-        //guard let guardPageControl = pageControl else { return }
-        
         pageControl.pageIndicatorTintColor = .lightGrayColor()
         pageControl.currentPageIndicatorTintColor = .greenColor()
         pageControl.backgroundColor = .clearColor()
@@ -104,7 +102,7 @@ extension MenuPageViewController: UIPageViewControllerDelegate {
         guard let index = contentViews.indexOf(contentVC) where index != NSNotFound else { return }
         pageControl.currentPage = index
         
-        if let selectView: HotelSelectViewController = parentViewController as? HotelSelectViewController {
+        if let selectView: HotelSearchViewController = parentViewController as? HotelSearchViewController {
             for planTable in selectView.planTables {
                 if planTable.hidden == false {
                     // PageViewがスワイプされた時にプラン一覧が開かれていた場合そのプラン一覧を閉じる

@@ -179,14 +179,20 @@ class CalendarCollectionViewController: UICollectionViewController {
         return cell
     }
     
-    
     // MARK: - UICollectionViewDelegate
     
     // セルクリック時の処理
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         
         if indexPath.section == 1 {
+            // 一番最初の画面のインスタンスを呼び出す
+            let hotelSearchViewController = navigationController?.viewControllers[0] as! HotelSearchViewController
+            hotelSearchViewController.lodgingDate = DateFormatters().dateFormatterYearMonthDay.stringFromDate(currentMonthDate[indexPath.row])
+            // 検索用テーブルを更新(日付のセルだけ更新するようにした方が良い気がする)
+            hotelSearchViewController.updateTable()
             
+            // 一つ前の画面に遷移
+            navigationController?.popViewControllerAnimated(true)
         }
     }
 }

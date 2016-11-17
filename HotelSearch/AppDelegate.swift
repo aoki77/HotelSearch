@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // 初期画面のViewControllerを生成
-        let startViewController: UIViewController = HotelSelectViewController()
+        let startViewController: UIViewController = HotelSearchViewController()
         // Navication Controllerを生成
         let navigationController: UINavigationController = UINavigationController(rootViewController: startViewController)
         // UIWindowを生成する
