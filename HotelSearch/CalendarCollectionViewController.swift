@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CalculateCalendarLogic
 
 class CalendarCollectionViewController: UICollectionViewController {
     
@@ -87,24 +88,6 @@ class CalendarCollectionViewController: UICollectionViewController {
         return DateFormatters().dateFormatterDay.stringFromDate(currentMonthDate[indexPath.row])
     }
     
-    /// 翌月を返す
-    private func nextMonth() -> NSDate {
-        let addValue: Int = 1
-        let calendar = NSCalendar.currentCalendar()
-        let dateComponents = NSDateComponents()
-        dateComponents.month = addValue
-        return calendar.dateByAddingComponents(dateComponents, toDate: currentMonth, options: NSCalendarOptions(rawValue: 0))!
-    }
-    
-    /// 昨月を返す
-    private func lastMonth() -> NSDate {
-        let addValue = -1
-        let calendar = NSCalendar.currentCalendar()
-        let dateComponents = NSDateComponents()
-        dateComponents.month = addValue
-        return calendar.dateByAddingComponents(dateComponents, toDate: currentMonth, options: NSCalendarOptions(rawValue: 0))!
-    }
-    
     /// セルの背景色を変更する
     private func cellColorChange(cell: CalendarCell, indexPath: NSIndexPath) -> CalendarCell {
         if DateFormatters().dateFormatterYearMonth.stringFromDate(currentMonthDate[indexPath.row]).compare(DateFormatters().dateFormatterYearMonth.stringFromDate(currentMonth)) != NSComparisonResult.OrderedSame {
@@ -116,7 +99,6 @@ class CalendarCollectionViewController: UICollectionViewController {
         } else {
             cell.backgroundColor = .whiteColor()
         }
-        
         return cell
     }
     
@@ -128,6 +110,13 @@ class CalendarCollectionViewController: UICollectionViewController {
             cell.calendarLabel.textColor = .blueColor()
         } else {
             cell.calendarLabel.textColor = .blackColor()
+        }
+        
+        // 該当日が祝日かどうかを判定してboolを返す
+        let holidayFlag = CalculateCalendarLogic().judgeJapaneseHoliday(Int(DateFormatters().dateFormatterYear.stringFromDate(currentMonthDate[indexPath.row]))!, month: Int(DateFormatters().dateFormatterMonth.stringFromDate(currentMonthDate[indexPath.row]))!, day: Int(DateFormatters().dateFormatterDay.stringFromDate(currentMonthDate[indexPath.row]))!)
+        
+        if holidayFlag {
+            cell.calendarLabel.textColor = .redColor()
         }
         
         return cell
@@ -147,8 +136,8 @@ class CalendarCollectionViewController: UICollectionViewController {
         swipeRight.direction = UISwipeGestureRecognizerDirection.Right
         collectionView!.addGestureRecognizer(swipeRight)
     }
-
-// MARK: - UICollectionViewDataSource
+    
+    // MARK: - UICollectionViewDataSource
     
     /// セクション数を決める
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -190,8 +179,8 @@ class CalendarCollectionViewController: UICollectionViewController {
         return cell
     }
     
-
-// MARK: - UICollectionViewDelegate
+    
+    // MARK: - UICollectionViewDelegate
     
     // セルクリック時の処理
     override func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
@@ -207,7 +196,7 @@ extension CalendarCollectionViewController: UIGestureRecognizerDelegate {
     /// 翌月を呼び出す
     func swipeNextMonth() {
         currentMonthDate.removeAll()
-        currentMonth = nextMonth()
+        currentMonth = ReturnMonth().nextMonth(currentMonth)
         updateNavigationItem()
         collectionView!.reloadData()
     }
@@ -215,7 +204,7 @@ extension CalendarCollectionViewController: UIGestureRecognizerDelegate {
     /// 昨月を呼び出す
     func swipeLastMonth() {
         currentMonthDate.removeAll()
-        currentMonth = lastMonth()
+        currentMonth = ReturnMonth().lastMonth(currentMonth)
         updateNavigationItem()
         collectionView!.reloadData()
     }

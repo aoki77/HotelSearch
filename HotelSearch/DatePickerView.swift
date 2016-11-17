@@ -22,7 +22,6 @@ class DatePickerView: UIPickerView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        setDate()
         dataSource = self
         delegate = self
     }
@@ -36,17 +35,6 @@ class DatePickerView: UIPickerView {
         let day = days[pickerView.selectedRowInComponent(1)]
         
         label.text = "\(month)月 \(day)日"
-    }
-    
-    private func setDate() {
-        let calendar = NSCalendar(identifier: NSCalendarIdentifierGregorian)!
-        let nowDate = NSDate()
-        
-        // 今月から半年後までの値を配列に入れる
-//        for i in 0...6 {
-//            months.append(DateFormatters().dateFormatter.stringFromDate(calendar.dateByAddingUnit(.Month, value: i, toDate: nowDate, options: NSCalendarOptions())!))
-//        }
-        
     }
 }
 
